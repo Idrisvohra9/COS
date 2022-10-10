@@ -1,0 +1,53 @@
+.container{
+    text-align: center;
+    margin-top:23px
+}
+
+table{
+    margin: auto;
+    box-shadow: #040404;
+}
+
+body
+{
+    background-image: url(logo_background_2.jpg);
+    background-size: 100%;
+    
+}
+input{
+    border-radius: 21px;
+    border: 5px solid #61adf5;
+    font-size:34px;
+    height: 65px;
+    width: 456px;
+}
+
+button{
+    border-radius: 20px;
+    font-size: 40px;
+    background: #05d2f2;
+    width: 102px;
+    height: 90px;
+    margin: 6px;
+    
+}
+ button:hover {
+    transform: scale(.98);
+    background-color: #61adf5;
+ }
+
+
+
+.calculator{ 
+    border: 4px solid #3ebbf9;
+    background-color: #140b5b;
+    padding: 23px;
+    border-radius: 53px;
+    display: inline-block;
+    
+}
+
+h1{
+    font-size: 28px;
+    font-family: 'Courier New', Courier, monospace;
+}

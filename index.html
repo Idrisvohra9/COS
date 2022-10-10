@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html lang="en-IN">
+  <head>
+    <title>COS Desktop</title>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="Icons/favicon_icon.png" />
+
+    <!-- Bootstrap responsive CSS Stuff -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="Main.css" />
+
+    <!-- Custom font: -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Satisfy"
+    />
+  </head>
+  <body id="main">
+    <!-- notification bar -->
+    <div id="notifBar">
+      <img src="Icons/notifBarGold.svg" alt="" class="notifBarGold" />
+      <div class="notifIcons-content">
+        <img
+          src="Icons/user-svgrepo-com.svg"
+          alt=""
+          class="notifIcons"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          title="User"
+          onclick="showUserInfo()"
+        />
+        <img
+          src="Icons/calendar-date-svgrepo-com.svg"
+          alt=""
+          class="notifIcons"
+          onmouseover="showDateTime(this)"
+          onclick="showDateTimeFull(this)"
+        />
+        <img
+          src="Icons/battery-svgrepo-com.svg"
+          alt=""
+          class="notifIcons"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          title="Battery: 40%"
+          onclick="showBatterySaving()"
+          id="battery"
+        />
+        <img
+          src="Icons/bluetooth-svgrepo-com.svg"
+          alt=""
+          class="notifIcons"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          title="Bluetooth"
+          onclick="showBluetooth();"
+        />
+        <img
+          src="Icons/wifi-svgrepo-com.svg"
+          alt=""
+          class="notifIcons"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          title="Wifi"
+          onclick="showWifi();"
+        />
+        <img
+          src="Icons/power button.svg"
+          alt=""
+          class="notifIcons"
+          style="width: 40px; height: 40px; padding: 0px"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          title="Power"
+          onclick="showPowerOpts();"
+        />
+      </div>
+    </div>
+
+    <!-- taskbar -->
+    <div id="taskBar">
+      <div class="mainBtns">
+        <img
+          src="Icons/back-svgrepo-com.svg"
+          alt=""
+          class="app-icons"
+          onclick="history.back();"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Back"
+        />
+        <a
+          href="desktop.html"
+          target="Frame"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Home"
+          onclick="closeAllApps();"
+        >
+          <img src="Icons/home-two-svgrepo-com.svg" alt="" class="app-icons" />
+        </a>
+        <img
+          src="Icons/apps-2-svgrepo-com.svg"
+          alt=""
+          class="app-icons"
+          id="appsContainerBtn"
+          onclick="openAppsContainer();"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Apps"
+        />
+      </div>
+
+      <div class="pinnedApps">
+        <a
+          href="Applications/COS Console.html"
+          class="apps"
+          target="Frame"
+          onclick="openApp(event)"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="COS Console"
+        >
+          <img src="Icons/console-svgrepo-com.svg" alt="" class="app-icons" />
+        </a>
+        <a
+          href="Applications/notes.html"
+          class="apps"
+          target="Frame"
+          onclick="openApp(event)"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Notes"
+        >
+          <img src="Icons/note-svgrepo-com.svg" alt="" class="app-icons" />
+        </a>
+        <a
+          href="Applications/Contact Book/index.html"
+          class="apps"
+          target="Frame"
+          onclick="openApp(event)"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Contact Book"
+        >
+          <img src="Icons/contacts-svgrepo-com.svg" alt="" class="app-icons" />
+        </a>
+        <a
+          href="Applications/File_Manager/index.html"
+          class="apps"
+          target="Frame"
+          onclick="openApp(event)"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="File Manager"
+        >
+          <img
+            src="Icons/files-folder-svgrepo-com.svg"
+            alt=""
+            class="app-icons"
+          />
+        </a>
+
+        <a
+          href="Applications/"
+          class="apps"
+          target="Frame"
+          onclick="openApp(event)"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="COS Browser"
+        >
+          <img src="Icons/browser-svgrepo-com.svg" alt="" class="app-icons" />
+        </a>
+      </div>
+      <div class="sideFuntional">
+        <img
+          src="Icons/push-pin-svgrepo-com.svg"
+          alt=""
+          class="SF"
+          onclick="pinTabs(this)"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Pin Tabs"
+        />
+        <img
+          src="Icons/visibility-svgrepo-com.svg"
+          alt=""
+          class="SF"
+          onclick="hideOrShow(this)"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Tabs Visibility"
+        />
+      </div>
+    </div>
+
+    <a
+      href="desktop.html"
+      style="visibility: hidden"
+      target="Frame"
+      id="desktop"
+    ></a>
+    <!-- Dialog containers -->
+    <div class="notif-dialogs"></div>
+
+    <div id="powerOpts">
+      <img
+        src="Icons/close-svgrepo-com.svg"
+        onclick="closeDialog();"
+        style="position: absolute; top: 0; right: 0"
+      />
+      <a onclick="this.setAttribute('href','Sleep_Mode.html')">
+        <img src="Icons/sleep-svgrepo-com.svg" alt="" />
+        <span>Sleep mode</span>
+      </a>
+
+      <a onclick="this.setAttribute('href','ShutDown.html')">
+        <img src="Icons/power button.svg" alt="" />
+        <span>Shut down</span>
+      </a>
+
+      <a onclick="this.setAttribute('href','LoginPageGold.html')">
+        <img src="Icons/lock-svgrepo-com.svg" alt="" />
+        <span>Lock</span>
+      </a>
+
+      <a
+        style="border: none"
+        onclick="this.setAttribute('href','ShutDown.html')"
+      >
+        <img src="Icons/refresh-svgrepo-com.svg" alt="" />
+        <span>Restart</span>
+      </a>
+    </div>
+
+    <div id="appsContainer">
+      <h2 style="align-self: flex-start">App list:</h2>
+
+      <a href="Applications/COS Console.html" target="Frame">
+        <img src="Icons/console-svgrepo-com.svg" alt="" class="app-icons" />
+        <span>COS Console</span>
+      </a>
+
+      <a href="Applications/notes.html" target="Frame">
+        <img src="Icons/note-svgrepo-com.svg" alt="" class="app-icons" />
+        <span>Notes</span>
+      </a>
+
+      <a href="Applications/Contact Book/index.html" target="Frame">
+        <img src="Icons/contacts-svgrepo-com.svg" alt="" class="app-icons" />
+        <span>Contact Book</span>
+      </a>
+
+      <a href="Applications/Calculator/index.html" target="Frame">
+        <img src="Icons/calculator-svgrepo-com.svg" alt="" class="app-icons" />
+        <span>Calculator</span>
+      </a>
+
+      <a href="Applications/File_Manager/index.html" target="Frame">
+        <img
+          src="Icons/files-folder-svgrepo-com.svg"
+          alt=""
+          class="app-icons"
+        />
+        <span>File Manager</span>
+      </a>
+
+      <a href="Applications/" target="Frame">
+        <img src="Icons/browser-svgrepo-com.svg" alt="" class="app-icons" />
+        <span>COS Browser</span>
+      </a>
+
+      <a href="Applications/WebCam_App.html" target="Frame">
+        <img src="Icons/camera-svgrepo-com.svg" alt="" class="app-icons" />
+        <span>WebCam App</span>
+      </a>
+
+      <a href="Applications/Paint_app/index.html" target="Frame">
+        <img src="Icons/paint-svgrepo-com.svg" alt="" class="app-icons" />
+        <span>Paint</span>
+      </a>
+      <div class="inDevelopment">
+        <h3>In Development:</h3>
+        <a>
+          <img src="Icons/store-svgrepo-com.svg" alt="" class="app-icons" />
+          <span>COS APPStore</span>
+        </a>
+        <a>
+          <img src="Icons/video-games-joystick-svgrepo-com.svg" alt="" class="app-icons" />
+          <span>Game Zone</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Dialogs container ends -->
+
+    <!-- Message display -->
+    <div id="msg"></div>
+
+    <iframe src="" frameborder="0" class="mainFrame" name="Frame"></iframe>
+
+    <!-- JS -->
+    <script src="Main.js"></script>
+
+    <!-- For tooltip -->
+    <script>
+      var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      );
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    </script>
+  </body>
+</html>

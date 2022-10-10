@@ -1,0 +1,452 @@
+body {
+  background-color: rgb(11, 48, 56);
+  color: rgb(165, 165, 165);
+  font-family:'Courier New' ;
+}
+*{
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(10, 10, 11, 0.827);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: rgba(10, 10, 11);
+}
+
+.title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: -50px;
+  cursor: pointer;
+}
+.logo {
+  width: 70px;
+  height: 70px;
+}
+#search {
+  width: 200px;
+  line-height: 35px;
+  font-size: 20px;
+  background-color: rgba(165, 165, 165, 0.57);
+  outline: none;
+  background-image: url("Images/search.svg");
+  background-size: 30px;
+  background-repeat:no-repeat;
+  background-position: 5px 4px;
+  border-radius: 25px;
+  border: 2px solid black;
+  top: -5px;
+  color: white;
+  /* 4 values in padding:top,right,bottom,left */
+  padding: 0 0 0 40px;
+  background-color: rgb(240, 240, 240, 0.5);
+}
+
+#addButton {
+  filter: invert();
+  z-index: 1;
+}
+
+#more {
+  filter: invert();
+  z-index: 1;
+}
+
+.btns {
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 30px;
+  padding:5px;
+  cursor: pointer;
+  transition: background 1s;
+  transition-timing-function: ease;
+}
+
+.btns:hover {
+  background-color: rgba(128, 128, 128, 0.533);
+}
+
+.options {
+  position: fixed;
+  display:flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  right: 10px;
+  top: 10px;
+  z-index: 3;
+}
+
+#main-content {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  height: auto;
+  margin-top: 70px;
+  border-radius: 60px;
+  background-color: rgba(10, 10, 11, 0.8);
+}
+
+.Users-contact {
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  border-radius: 60px;
+  height: 90px;
+  background-color: rgba(5, 5, 50, 0.674);
+  transition: background-color 0.5s ease;
+}
+
+.Users-contact:hover #info {
+  display: inline;
+}
+
+.Users-contact:hover {
+  background-color: rgba(15, 15, 77, 0.674);
+}
+
+.contact {
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  border-radius: 60px;
+  height: 90px;
+  background-color: rgba(5, 5, 50, 0.674);
+}
+
+.contact:hover #call,
+.contact:hover #info {
+  display: block;
+}
+
+.contact:hover {
+  background-color: rgba(15, 15, 77, 0.674);
+}
+
+.people {
+  filter: invert();
+  align-self: center;
+}
+
+#name {
+  font-size: 30px;
+  width: 670px;
+  align-self: center;
+  text-align: left;
+  border-bottom: 1px solid white;
+}
+
+#number {
+  font-size: 30px;
+  align-self: center;
+  white-space: nowrap;
+}
+
+.ContactOpts {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  right: 15px;
+  align-content: flex-end;
+}
+.innerBtns{
+  width: 50px;
+  height: 50px;
+}
+#call {
+  display: none;
+  align-self: center;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 5px;
+  transition: background 1s, border-radius 400ms linear;
+}
+
+#call:hover {
+  border-radius: 60px;
+  background-color: green;
+}
+
+
+#info {
+  display: none;
+  align-self: center;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 5px;
+  transition: background 1s, border-radius 400ms linear;
+}
+#info:hover{
+  border-radius: 60px;
+  background-color: #248ebc;
+}
+#AC .blurBG{
+  height: 100%;
+  width: 100%;
+  filter: blur(10px);
+  background-color:rgba(0, 0, 0, 0.326);
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+#addContact {
+  height: 500px;
+  width: 600px;
+  z-index: 3;
+  position: absolute;
+  top: 5px;
+  right: 240px;
+  border-radius: 30px;
+  border-bottom: 5px solid white;
+  display: none;
+  text-align: left;
+  flex-direction: column;
+  font-family: "Times New Roman";
+  color: rgb(165, 165, 165);
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(10, 10, 11, 0.9);
+  font-size: 26px;
+  box-shadow: 10px 15px 10px black;
+}
+
+#addContact div :not(#save) {
+  align-self: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.fields {
+  height: fit-content;
+  width: max-content;
+  outline: none;
+  background-color: #3d3935;
+  border: none;
+  border-radius: 2px;
+  color: #248ebc;
+  font-size: 26px;
+}
+
+#moreOpts {
+  width: 200px;
+  position: absolute;
+  top: 5px;
+  right: 0px;
+  border-radius: 30px;
+  border-bottom: 5px solid white;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(10, 10, 11, 0.9);
+  overflow: hidden;
+  box-shadow: 5px 10px 7px black;
+}
+
+#moreOpts span {
+  font-size: 26px;
+  text-align: left;
+  margin-top: 10px;
+  padding: 5px 10px 5px 10px;
+  color: white;
+  border-bottom: 1px solid white;
+  transition: background 1s;
+  transition-timing-function: ease;
+}
+
+#moreOpts span:hover {
+  background-color: rgba(128, 128, 128, 0.533);
+  cursor: pointer;
+}
+
+.backArrow {
+  width: 16px;
+  transform: rotate(90deg);
+}
+
+.btns-l {
+  background-color: black;
+  width: fit-content;
+  margin-top: 20px;
+  padding: 0 10px 0 10px;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: background 1s, border-radius 1s;
+}
+
+#save:hover {
+  border-radius: 20px;
+  background-color: rgba(128, 128, 128, 0.533);
+}
+
+.subHeads {
+  font-size: 18px;
+  text-align: left;
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+#warningMsg {
+  color: crimson;
+  text-decoration: underline;
+  font-family: 'Lucida Sans';
+  font-size: 20px;
+  margin: 20px;
+  font-weight: bold;
+}
+
+.keypad{
+  width: 100%;
+  height: 50%;
+  background-color:rgb(11, 48, 56);
+  display: flex;
+  justify-content:space-around;
+  position:fixed;
+  bottom: 185px;
+  left: 0;
+  right: 0;
+}
+
+.keypad .container{
+  justify-content:center;
+  width: 35%;
+  height:fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: black;
+  border-radius: 10px;
+}
+.inputPlace{
+  display: flex;
+}
+
+.inputPlace .Bs{
+  width:40px;
+  height:40px;
+  border-radius: 40px;
+  position: absolute;
+  right: 410px;
+  top: 5px;
+  transition: background 1s;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.inputPlace .Bs:hover{
+  background-color: rgba(240, 248, 255, 0.572);
+}
+.inputPlace #keypadField{
+  width: 100%;
+  color: white;
+  background-color: black;
+  font-family: 'Courier New';
+  text-align: center;
+  outline: none;
+  border: none;
+  height: 55px;
+  justify-content:center;
+  font-size:35px;
+}
+
+.keypad .container .keys{
+  width: 80px;
+  height: 80px;
+  border-radius:50px;
+  text-align: center;
+  padding: 30px;
+  font-weight: bold;
+  background-color:black;
+  margin: 2px 22px 2px 22px;
+  cursor: pointer;
+  transition: background 1s;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.keypad .container .keys:hover{
+  background-color: rgba(240, 248, 255, 0.572);
+}
+
+.keypad .container .callBtn{
+  background-color:green;
+  margin-left: -25px;
+  margin-top: -10px;
+}
+nav {
+  position: fixed;
+  background-color: rgba(10, 38, 44, 0.849);
+  display: flex;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  text-align: center;
+  color: #716558;
+}
+
+nav span {
+  color: rgb(165, 165, 165);
+  font-size: 30px;
+  text-decoration: 2px solid underline rgba(5, 5, 50);
+  transition: background 1s, text-decoration 1s;
+  cursor: pointer;
+  padding:0 10px 0 10px;
+}
+
+nav span:hover {
+  background-color: rgba(0, 139, 139, 0.675);
+  text-decoration: 2px solid underline white;
+}
+
+nav .tabs.active {
+  text-decoration: 2px solid underline silver;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#showCalling{
+  width: 400px;
+  height: 90px;
+  line-height:40px;
+  display: none;
+  background-color:rgba(0, 0, 0, 0.7);
+  position: fixed;
+  flex-direction: row;
+  padding:30px;
+  justify-content: space-around;
+  left: 8px;
+  bottom:38px;
+  border-radius: 20px;
+  box-shadow: 10px 5px 10px black;
+}
+
+#showCalling div{
+  font-size:20px;
+  margin-right: 5px;
+  color: white;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.EndCall{
+  width: 40px;
+  background-color: red;
+}
