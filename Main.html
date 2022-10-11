@@ -76,6 +76,15 @@
           onclick="showWifi();"
         />
         <img
+          src="Icons/more-svgrepo-com.svg"
+          alt=""
+          class="notifIcons"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          title="More Options"
+          onclick="showMoreOptionsDialog();"
+        />
+        <img
           src="Icons/power button.svg"
           alt=""
           class="notifIcons"
@@ -101,12 +110,11 @@
           title="Back"
         />
         <a
-          href="desktop.html"
+          onclick="this.setAttribute('href','desktop.html');closeAllApps();"
           target="Frame"
           data-bs-toggle="tooltip"
           data-bs-placement="top"
           title="Home"
-          onclick="closeAllApps();"
         >
           <img src="Icons/home-two-svgrepo-com.svg" alt="" class="app-icons" />
         </a>
@@ -124,10 +132,9 @@
 
       <div class="pinnedApps">
         <a
-          href="Applications/COS Console.html"
+          onclick="this.setAttribute('href','Applications/COS Console.html');openApp(event)"
           class="apps"
           target="Frame"
-          onclick="openApp(event)"
           data-bs-toggle="tooltip"
           data-bs-placement="top"
           title="COS Console"
@@ -135,7 +142,7 @@
           <img src="Icons/console-svgrepo-com.svg" alt="" class="app-icons" />
         </a>
         <a
-          href="Applications/notes.html"
+          onclick="this.setAttribute('href','Applications/notes.html');openApp(event)"
           class="apps"
           target="Frame"
           onclick="openApp(event)"
@@ -146,7 +153,7 @@
           <img src="Icons/note-svgrepo-com.svg" alt="" class="app-icons" />
         </a>
         <a
-          href="Applications/Contact Book/index.html"
+          onclick="this.setAttribute('href','Applications/Contact Book/index.html');openApp(event)"
           class="apps"
           target="Frame"
           onclick="openApp(event)"
@@ -157,7 +164,7 @@
           <img src="Icons/contacts-svgrepo-com.svg" alt="" class="app-icons" />
         </a>
         <a
-          href="Applications/File_Manager/index.html"
+          onclick="this.setAttribute('href','Applications/File_Manager/index.html');openApp(event)"
           class="apps"
           target="Frame"
           onclick="openApp(event)"
@@ -173,7 +180,7 @@
         </a>
 
         <a
-          href="Applications/"
+          onclick="this.setAttribute('href','Applications/');openApp(event)"
           class="apps"
           target="Frame"
           onclick="openApp(event)"
@@ -198,7 +205,7 @@
           src="Icons/visibility-svgrepo-com.svg"
           alt=""
           class="SF"
-          onclick="hideOrShow(this)"
+          onclick="hideTabs(this)"
           data-bs-toggle="tooltip"
           data-bs-placement="top"
           title="Tabs Visibility"
@@ -213,12 +220,31 @@
       id="desktop"
     ></a>
     <!-- Dialog containers -->
-    <div class="notif-dialogs"></div>
+    <div class="notif-dialogs dialogs"></div>
 
-    <div id="powerOpts">
+    <div id="moreOpts" class="dialogs">
       <img
         src="Icons/close-svgrepo-com.svg"
-        onclick="closeDialog();"
+        onclick="closeDialog(this);"
+        style="position: absolute; top: 0; right: 0"
+      />
+      <div>Notifications:</div>
+      <div class="notif">No new Notifications.</div>
+      <a onclick="this.setAttribute('href','Settings.html')">
+        <img src="Icons/setting-svgrepo-com.svg" alt="" />
+        <span>Settings</span>
+      </a>
+
+      <a onclick="this.setAttribute('href','LockScreen.html')">
+        <img src="Icons/user-svgrepo-com.svg" alt="" />
+        <span>Change User</span>
+      </a>
+    </div>
+
+    <div id="powerOpts" class="dialogs">
+      <img
+        src="Icons/close-svgrepo-com.svg"
+        onclick="closeDialog(this);"
         style="position: absolute; top: 0; right: 0"
       />
       <a onclick="this.setAttribute('href','Sleep_Mode.html')">
@@ -231,7 +257,7 @@
         <span>Shut down</span>
       </a>
 
-      <a onclick="this.setAttribute('href','LoginPageGold.html')">
+      <a onclick="this.setAttribute('href','LockScreen.html')">
         <img src="Icons/lock-svgrepo-com.svg" alt="" />
         <span>Lock</span>
       </a>
@@ -245,30 +271,30 @@
       </a>
     </div>
 
-    <div id="appsContainer">
+    <div id="appsContainer" class="dialogs">
       <h2 style="align-self: flex-start">App list:</h2>
 
-      <a href="Applications/COS Console.html" target="Frame">
+      <a onclick="this.setAttribute('href','Applications/COS Console.html')" target="Frame">
         <img src="Icons/console-svgrepo-com.svg" alt="" class="app-icons" />
         <span>COS Console</span>
       </a>
 
-      <a href="Applications/notes.html" target="Frame">
+      <a onclick="this.setAttribute('href','Applications/notes.html')" target="Frame">
         <img src="Icons/note-svgrepo-com.svg" alt="" class="app-icons" />
         <span>Notes</span>
       </a>
 
-      <a href="Applications/Contact Book/index.html" target="Frame">
+      <a onclick="this.setAttribute('href','Applications/Contact Book/index.html')" target="Frame">
         <img src="Icons/contacts-svgrepo-com.svg" alt="" class="app-icons" />
         <span>Contact Book</span>
       </a>
 
-      <a href="Applications/Calculator/index.html" target="Frame">
+      <a onclick="this.setAttribute('href','Applications/Calculator/index.html')" target="Frame">
         <img src="Icons/calculator-svgrepo-com.svg" alt="" class="app-icons" />
         <span>Calculator</span>
       </a>
 
-      <a href="Applications/File_Manager/index.html" target="Frame">
+      <a onclick="this.setAttribute('href','Applications/File_Manager/index.html')" target="Frame">
         <img
           src="Icons/files-folder-svgrepo-com.svg"
           alt=""
@@ -277,17 +303,17 @@
         <span>File Manager</span>
       </a>
 
-      <a href="Applications/" target="Frame">
+      <a onclick="this.setAttribute('href','Applications/')" target="Frame">
         <img src="Icons/browser-svgrepo-com.svg" alt="" class="app-icons" />
         <span>COS Browser</span>
       </a>
 
-      <a href="Applications/WebCam_App.html" target="Frame">
+      <a onclick="this.setAttribute('href','Applications/WebCam_App.html')" target="Frame">
         <img src="Icons/camera-svgrepo-com.svg" alt="" class="app-icons" />
         <span>WebCam App</span>
       </a>
 
-      <a href="Applications/Paint_app/index.html" target="Frame">
+      <a onclick="this.setAttribute('href','Applications/Paint_app/index.html')" target="Frame">
         <img src="Icons/paint-svgrepo-com.svg" alt="" class="app-icons" />
         <span>Paint</span>
       </a>

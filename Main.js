@@ -8,15 +8,17 @@ const notifDialog = document.getElementsByClassName("notif-dialogs")[0];
 
 const dialogs = document.getElementsByClassName("dialogs");
 
-addEventListener("load", desktop.click());
+if(document.body.contains(desktop)){
+  addEventListener("load", desktop.click());
+}
 
-function ShowCustomize(e) {
+function ShowDesktopDialog(e) {
   let Xpos = e.clientX;
   let Ypos = e.clientY;
-  let place = document.getElementsByClassName("customize-dialog")[0];
+  let place = document.getElementsByClassName("desktop-dialog")[0];
   place.style.display = "flex";
   place.innerHTML = `
-    <div class="opts">
+    <div class="opts" data-bs-toggle="modal" data-bs-target="#myModal">
         <img src="Icons/brush-svgrepo-com.svg" alt="">
         <span>Customize</span>
       </div>
@@ -37,6 +39,8 @@ function ShowCustomize(e) {
   place.style.left = Xpos + "px";
   // console.log("X-axis: " + Xpos + ", Y-axis: " + Ypos);
 }
+
+
 function showUserInfo() {
   notifDialog.style.display = "flex";
 
@@ -143,7 +147,7 @@ function showWifi() {
           <label class="form-check-label" for="wifi">Wifi</label>
           <input class="form-check-input" type="checkbox" id="wifi" />
         </div>
-        <img src="Icons/close-svgrepo-com.svg" onclick="closeDialog();">
+        <img src="Icons/close-svgrepo-com.svg" onclick="closeDialog(this);">
         <hr />
       </div>
       <div class="display2"></div>
@@ -161,6 +165,7 @@ function closeAllApps(){
     appsIcons[i].className = appsIcons[i].className.replace(" active","");
     console.log(appsIcons[i].className);
   }
+  
 }
 
 // AppContainer Showing variable:
@@ -201,8 +206,7 @@ function openAppsContainer() {
 }
 
 function closeContainer(){
-  console.log("Closing container");
-  appsContainer.style.bottom = '-470px';
+  // appsContainer.style.bottom = '-470px';
 }
 
 function updateState(elem, target = "msg"){
@@ -238,19 +242,17 @@ function pinTabs(param) {
     f1 = 0;
   }
 }
-function checkVisibility(e) {
-  if(e.key=="Escape"){
-    inside++;
-    console.log("inn");
-    if(inside==2){
-      location.reload();
-    }
-    else{
-      checkVisibility(e);
-    }
+let c = 0;
+function showTabs() {
+  if(c==2){
+    notifBar.style.left = "0px";
+  }
+  var key = event.key;
+  if(key=="Escape"){
+    window.close()
   }
 }
-function hideOrShow(param) {
+function hideTabs(param) {
   let msg = document.getElementById("msg");
   if(f2 == 0){
     param.className += " enabled";
@@ -259,7 +261,7 @@ function hideOrShow(param) {
     updateState(msg);
     msg.innerText = "Tabs Hidden. Press Esc twice to make them visible.";
     let inside = 0;
-    document.addEventListener("keydown",checkVisibility(event));
+    document.addEventListener("keydown",showTabs());
     f2 = 1;
   }
   else{
@@ -269,10 +271,8 @@ function hideOrShow(param) {
   }
 }
 
-function closeDialog() {
-  notifDialog.style.display = 'none';
-  let dialog = document.getElementById("powerOpts");
-  dialog.style.display = "none";
+function closeDialog(param) {
+  param.parentElement.style.display = 'none';
 }
 
 function openApp(evt) {

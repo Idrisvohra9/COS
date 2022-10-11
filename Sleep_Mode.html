@@ -218,16 +218,16 @@
       });
 
       document.addEventListener(
-        "keydown",
-        (event) => {
-          var name = event.key;
-          var code = event.code;
-          if(event.key=="Escape"){
-            history.back();         
-          }
-          // Alert the key name and key code on keydown
-        },
-      );
+        "keydown",m);
+
+      function m(){
+        console.log("In");
+        var name = event.key;
+        console.log(name);
+        if(event.key=="Escape"){
+          history.back();
+        }
+      }
     </script>
   </body>
 </html>
