@@ -7,11 +7,18 @@
     <meta charset="utf-8" />
 
     <meta name="viewport" content="width=device-width" />
+    <!-- Bootstrap responsive CSS Stuff -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="Contact_Book.css" />
+    
   </head>
   <body>
-    <div class="title">
-      <h1 style="font-size: 80px">Contact Book</h1>
+    <div class="title align-items-center">
+      <h1 class="display-3">Contact Book</h1>
       <!-- This is the logo -->
       <svg version="1.1" width="32px" height="32px" viewBox="0 0 32 32" xml:space="preserve" class="logo">
         <style>
@@ -121,7 +128,7 @@
             <input type='number' id='Number' class='fields' onkeydown="EnterKeySave(event);">
           </div>
           <div id='save' class='btns-l' onclick='Save();'>Save</div>
-          <div id='save' class='btns-l' onclick='Back(this.parentNode);'>Back</div>
+          <div class='btns-l' onclick='Back(this.parentNode);'>Back</div>
           <div id="warningMsg"></div>
         </div>
       </span>
@@ -144,40 +151,7 @@
     <div id="main-content">
       <div id="c" class="tab-contents">
         <span class="subHeads">Personal Info:</span>
-        <div class="Users-contact">
-          <!-- Icon -->
-          <img src="Images/people.svg" alt="People" id="people" />
-          <span id="name">Idris</span>
-          <span id="number">+91 9106930717</span>
-          <div class="ContactOpts">
-              <img
-                src="Images/info-svgrepo-com.svg"
-                alt="info"
-                id="info"
-                class="innerBtns"
-                onclick="Info(this)"
-              />
-          </div>
-        </div>
-  
-        <span class="subHeads">Contacts:</span>
-        <div id="Contacts">
-          <div class="contact">
-            <img src="Images/people.svg" alt="People" id="people" />
-            <span id="name">Aryan</span>
-            <span id="number">+91 9126933217</span>
-            <div class="ContactOpts">
-              <img src="Images/call.svg" alt="call" id="call" class="innerBtns" onclick="call(this)"/>
-              <img
-                src="Images/info-svgrepo-com.svg"
-                alt="info"
-                id="info"
-                class="innerBtns"
-                onclick="Info(this)"
-                />
-            </div>
-        </div>
-        </div>
+          
         <div id="showInfo"></div>
         <div id="showCalling"></div>
       </div>

@@ -1,5 +1,4 @@
 let Contacts = document.getElementById("Contacts");
-const ContactArr = [];
 const Contact = {
   CName: "",
   Cno: "",
@@ -28,12 +27,6 @@ let n = 0;
 let n2 = 0;
 document.addEventListener("load", DefaultContact());
 
-function DefaultContact() {
-  Name.value = "Jay Dave";
-  Num.value = "929292922";
-  makeNewContacts();
-
-}
 
 function openTab(e) {
   let tabs = document.getElementsByClassName("tabs");
@@ -106,7 +99,6 @@ function showAddContactDialog() {
   let dialog = document.getElementById("addContact");
   dialog.style.display = "flex";
 }
-// the Back function takes a parameter which we will pass the parentNode of the button means the dialog itself and it will remove it from the specific div containers.
 
 function Back(param) {
   param.style.display = "none";
@@ -124,14 +116,16 @@ function Save() {
   }
 }
 
-
-
 function makeNewContacts() {
-
   Contact.CName = Name.value;
   Contact.Cno = "+91 " + Num.value;
   ContactArr[n] = Contact;
-
+  c = localStorage.getItem('contact');
+  if (c == null) {
+    ContactArr = [];
+  } else {
+    ContactArr = JSON.parse(notes);
+  }
   Contacts.innerHTML +=
     `
     <div class="contact">
@@ -154,6 +148,11 @@ function makeNewContacts() {
   Num.value = "";
   n++;
 }
+
+function ShowContact(){
+
+}
+
 function showMoreOptionsDialog() {
   let dialog = document.getElementById("MO");
   // <!-- svg is for the back arrow -->

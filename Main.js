@@ -6,11 +6,17 @@ let appsContainer = document.getElementById("appsContainer");
 
 const notifDialog = document.getElementsByClassName("notif-dialogs")[0];
 
-const dialogs = document.getElementsByClassName("dialogs");
+let dialogs = document.getElementsByClassName("dialogs");
+let D = document.getElementsByClassName("Desktop")[0];
 
+if(document.body.contains(D)){
+  D.style.backgroundImage = "url(" +localStorage.getItem("selectedBackground")+")";
+}
+// Load Desktop:
 if(document.body.contains(desktop)){
   addEventListener("load", desktop.click());
 }
+
 
 function ShowDesktopDialog(e) {
   let Xpos = e.clientX;
@@ -23,7 +29,7 @@ function ShowDesktopDialog(e) {
         <span>Customize</span>
       </div>
       <div class="opts">
-        <img src="Icons/refresh-svgrepo-com.svg" alt="">
+        <img src="Icons/refresh-svgrepo-com.svg" alt="" onclick="location.reload();">
         <span>Refresh</span>
       </div>
       <div class="opts">
@@ -76,7 +82,6 @@ function closeClock() {
   console.log("in");
   clearInterval(id);
   id= null;
-  closeDialog();
 }
 
 function showDateTimeFull() {
@@ -90,7 +95,7 @@ function showDateTimeFull() {
     `
   <div class="display1">
         <h3>Date/Time:</h3>
-        <img src="Icons/close-svgrepo-com.svg" onclick="closeClock();">
+        <img src="Icons/close-svgrepo-com.svg" onclick="closeClock();closeDialog(this);">
         <hr />
       </div>
       <div class="display2" style="margin-top: 50px;">
@@ -115,7 +120,7 @@ function showBatterySaving() {
           <label class="form-check-label" for="batterySaver">Battery Saver</label>
           <input class="form-check-input" type="checkbox" id="batterySaver" />
         </div>
-        <img src="Icons/close-svgrepo-com.svg" onclick="closeDialog();">
+        <img src="Icons/close-svgrepo-com.svg" onclick="closeDialog(this);">
         <hr />
       </div>
       <div class="display2"></div>
@@ -131,7 +136,7 @@ function showBluetooth() {
           <label class="form-check-label" for="bluetooth">Bluetooth</label>
           <input class="form-check-input" type="checkbox" id="bluetooth" />
         </div>
-        <img src="Icons/close-svgrepo-com.svg" onclick="closeDialog();">
+        <img src="Icons/close-svgrepo-com.svg" onclick="closeDialog(this);">
         <hr />
       </div>
       <div class="display2"></div>
@@ -152,6 +157,11 @@ function showWifi() {
       </div>
       <div class="display2"></div>
   `;
+}
+
+function showMoreOptionsDialog(){
+  let dialog = document.getElementById("moreOpts");
+  dialog.style.display = "flex";
 }
 
 function showPowerOpts() {
@@ -205,8 +215,12 @@ function openAppsContainer() {
   }
 }
 
-function closeContainer(){
-  // appsContainer.style.bottom = '-470px';
+
+function touch(){
+  for(var i=0; i<dialogs.length;i++){
+    console.log("IN");
+    console.log(dialogs[i].className);
+  }
 }
 
 function updateState(elem, target = "msg"){
@@ -272,6 +286,9 @@ function hideTabs(param) {
 }
 
 function closeDialog(param) {
+  if(param.parentElement.className == "display1"){
+    param.parentElement.parentElement.style.display = 'none';
+  }
   param.parentElement.style.display = 'none';
 }
 
@@ -285,4 +302,13 @@ function openApp(evt) {
     );
   }
   evt.currentTarget.children[0].className += " active";
+}
+
+function selectBackground(param){
+  let src = param.getAttribute("src");
+  localStorage.setItem("selectedBackground",src);
+
+  console.log(localStorage.getItem("selectedBackground"));
+  
+  D.style.backgroundImage = "url(" + src + ")";
 }

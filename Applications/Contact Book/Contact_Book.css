@@ -1,6 +1,14 @@
+:root{
+  --primaryClr :#3d5a80;
+  --secondaryClr :#293241;
+  --tertiaryClr :#e0fbfc;
+  --featureClr :#ee6c4d;
+  --fifthClr:#98c1d9;
+}
+
 body {
-  background-color: rgb(11, 48, 56);
-  color: rgb(165, 165, 165);
+  background-color: var(--primaryClr);
+  color: var(--tertiaryClr);
   font-family:'Courier New' ;
 }
 *{
@@ -15,20 +23,18 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(10, 10, 11, 0.827);
+  background-color: var(--featureClr);
   border-radius: 20px;
 }
 
-::-webkit-scrollbar-thumb:active {
-  background-color: rgba(10, 10, 11);
-}
 
 .title {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-top: -50px;
+  margin-top: 20px;
   cursor: pointer;
+  font-size: 20px;
 }
 .logo {
   width: 70px;
@@ -38,7 +44,7 @@ body {
   width: 200px;
   line-height: 35px;
   font-size: 20px;
-  background-color: rgba(165, 165, 165, 0.57);
+  background-color: var(--fifthClr);
   outline: none;
   background-image: url("Images/search.svg");
   background-size: 30px;
@@ -50,7 +56,6 @@ body {
   color: white;
   /* 4 values in padding:top,right,bottom,left */
   padding: 0 0 0 40px;
-  background-color: rgb(240, 240, 240, 0.5);
 }
 
 #addButton {
@@ -95,7 +100,7 @@ body {
   height: auto;
   margin-top: 70px;
   border-radius: 60px;
-  background-color: rgba(10, 10, 11, 0.8);
+  background-color: var(--tertiaryClr);
 }
 
 .Users-contact {
@@ -105,7 +110,7 @@ body {
   align-items: center;
   border-radius: 60px;
   height: 90px;
-  background-color: rgba(5, 5, 50, 0.674);
+  background-color: var(--secondaryClr);
   transition: background-color 0.5s ease;
 }
 
@@ -114,7 +119,7 @@ body {
 }
 
 .Users-contact:hover {
-  background-color: rgba(15, 15, 77, 0.674);
+  background-color: var(--primaryClr);
 }
 
 .contact {
@@ -124,7 +129,7 @@ body {
   align-items: center;
   border-radius: 60px;
   height: 90px;
-  background-color: rgba(5, 5, 50, 0.674);
+  background-color: var(--secondaryClr);
 }
 
 .contact:hover #call,
@@ -133,7 +138,7 @@ body {
 }
 
 .contact:hover {
-  background-color: rgba(15, 15, 77, 0.674);
+  background-color: var(--primaryClr);
 }
 
 .people {
@@ -221,7 +226,7 @@ body {
   color: rgb(165, 165, 165);
   justify-content: center;
   align-items: center;
-  background-color: rgba(10, 10, 11, 0.9);
+  background-color: var(--secondaryClr);
   font-size: 26px;
   box-shadow: 10px 15px 10px black;
 }
@@ -236,7 +241,7 @@ body {
   height: fit-content;
   width: max-content;
   outline: none;
-  background-color: #3d3935;
+  background-color: var(--tertiaryClr);
   border: none;
   border-radius: 2px;
   color: #248ebc;
@@ -246,19 +251,19 @@ body {
 #moreOpts {
   width: 200px;
   position: absolute;
-  top: 5px;
+  top: 40px;
   right: 0px;
   border-radius: 30px;
   border-bottom: 5px solid white;
   display: flex;
   flex-direction: column;
-  background-color: rgba(10, 10, 11, 0.9);
+  background-color: var(--featureClr);
   overflow: hidden;
   box-shadow: 5px 10px 7px black;
 }
 
 #moreOpts span {
-  font-size: 26px;
+  font-size: 16px;
   text-align: left;
   margin-top: 10px;
   padding: 5px 10px 5px 10px;
@@ -279,19 +284,19 @@ body {
 }
 
 .btns-l {
-  background-color: black;
+  background-color: var(--secondaryClr);
   width: fit-content;
   margin-top: 20px;
   padding: 0 10px 0 10px;
   align-self: center;
   justify-self: center;
   text-align: center;
-  border: 2px solid white;
+  border: 2px solid var(--primaryClr);
   cursor: pointer;
   transition: background 1s, border-radius 1s;
 }
 
-#save:hover {
+.btns-l:hover {
   border-radius: 20px;
   background-color: rgba(128, 128, 128, 0.533);
 }
@@ -301,6 +306,7 @@ body {
   text-align: left;
   margin-left: 15px;
   font-weight: bold;
+  color: var(--secondaryClr);
 }
 
 #warningMsg {
@@ -315,7 +321,7 @@ body {
 .keypad{
   width: 100%;
   height: 50%;
-  background-color:rgb(11, 48, 56);
+  background-color:var(--primaryClr);
   display: flex;
   justify-content:space-around;
   position:fixed;
@@ -330,7 +336,7 @@ body {
   height:fit-content;
   display: flex;
   flex-wrap: wrap;
-  background-color: black;
+  background-color: var(--primaryClr);
   border-radius: 10px;
 }
 .inputPlace{
@@ -354,7 +360,7 @@ body {
 .inputPlace #keypadField{
   width: 100%;
   color: white;
-  background-color: black;
+  background-color: var(--featureClr);
   font-family: 'Courier New';
   text-align: center;
   outline: none;
@@ -362,6 +368,8 @@ body {
   height: 55px;
   justify-content:center;
   font-size:35px;
+  margin-bottom: 5px;
+  border-radius: 20px;
 }
 
 .keypad .container .keys{
@@ -399,6 +407,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   flex-direction: row;
+  filter: drop-shadow(0 0 10px black);
   text-align: center;
   color: #716558;
 }
@@ -413,13 +422,13 @@ nav span {
 }
 
 nav span:hover {
-  background-color: rgba(0, 139, 139, 0.675);
+  filter:drop-shadow(0 0 15px var(--secondaryClr));
   text-decoration: 2px solid underline white;
 }
 
 nav .tabs.active {
   text-decoration: 2px solid underline silver;
-  background-color: rgba(0, 0, 0, 0.5);
+  filter:drop-shadow(0 0 15px var(--tertiaryClr));
 }
 
 #showCalling{

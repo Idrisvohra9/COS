@@ -18,7 +18,7 @@
             align-items: center;
             min-height: 100vh;
             background:#23242a;
-            background-image: url("login_background_final.jpg");
+            background-image: url("Wallpapers/JS_login_background.jpg");
             background-size: cover;
         }
         .box
@@ -39,7 +39,7 @@
             left: -50%;
             width: 380px;
             height: 420px;
-            background: linear-gradient(0deg,transparent,#45f3ff,#45f3ff);  /*gold theme :- #ffd700 */
+            background: linear-gradient(0deg,transparent,goldenrod,#fee800);  /*gold theme :- #ffd700 */
             transform-origin: bottom right;
             animation: animate 6s linear infinite;
         }        
@@ -51,7 +51,7 @@
             left: -50%;
             width: 380px;
             height: 420px;
-            background: linear-gradient(0deg,transparent,#45f3ff,#45f3ff);
+            background: linear-gradient(0deg,transparent,#fee800,goldenrod);
             transform-origin: bottom right;
             animation: animate 6s linear infinite;
             animation-delay: -3s;
@@ -82,7 +82,7 @@
         }
         .form h2
         {
-            color: #45f3ff;
+            color: #fee800;
             font-weight: 500;
             text-align: center;
             letter-spacing: 0.1em;
@@ -120,7 +120,7 @@
         .inputBox input:valid ~ span,
         .inputBox input:focus ~ span
         {
-            color: #45f3ff;
+            color: #fee800;
             transform: translateX(0px) translateY(-34px);
             font-size: 0.75em;
         }
@@ -131,7 +131,7 @@
             bottom: 0;
             width: 100%;
             height: 2px;
-            background: #45f3ff;
+            background: #fee800;
             border-radius: 4px;
             transition: 0.5s;
             pointer-events: none;
@@ -157,7 +157,7 @@
         .links a:hover,
         .links a:nth-child(2)
         {
-            color: #45f3ff;
+            color: #fee800;
         }
         
         .login
@@ -166,7 +166,7 @@
         	color:#23242a;
             border: none;
             outline: none;
-            background: #45f3ff;
+            background: #fee800;
             padding: 10px;
             width: 100px;
             margin-top: 10px;
@@ -180,56 +180,37 @@
             opacity: 0.8;
         }
         
-        .date{
+        .datetime{
             position: absolute;
-            bottom: 5px;
+            bottom: 20px;
             /* top: 120px; */
-            right: 10px;
+            right: 20px;
             font-weight: bold;
             font-size:22px;
-            background: -webkit-linear-gradient(#fff, #45f3ff);
-            -webkit-background-clip: text;
-            background-clip:text;
-            -webkit-text-fill-color: transparent;
-        }
-        .time{
-            position: absolute;
-            top: 2px;
-            /* top: 120px; */
-            left: 585px;
-            font-weight: bold;
-            font-size:25px;
-            background: -webkit-linear-gradient(#fff, #45f3ff);
+            background: -webkit-linear-gradient(gold, orange);
             -webkit-background-clip: text;
             background-clip:text;
             -webkit-text-fill-color: transparent;
         }
 
-
-        .btns{
+        .power{
+            width: 75px;
+            height: 75px;
             position: absolute;
-            top: -12px;
-            right: 1px;
-        }
-
-        .btns img{
-            width: 55px;
-            height: 55px;
-            filter: drop-shadow(0 0 5px #45f3ff);
-            padding:5px;
+            top: 10px;
+            right: 10px;
+            border-radius: 50px;
+            filter: drop-shadow(0 0 5px goldenrod);
+            padding:0;
         }
     </style>
 </head>
 <body>
-    <div class="btns">
-        <img src="wifi-svgrepo-com.svg" alt="" style="width: 30px;height: 30px;position: relative;top:-12px;right: -15px;">
-        <img src="battery-svgrepo-com.svg" alt="" style="width: 30px;height: 30px;position: relative;top:-12px;right: -15px;">
-        <img src="power button.svg" alt="" class="power">
-    </div>
-    <div class="time">
-        <div id="time" style="text-align: center;"></div>
-    </div>
-    <div class="date">
+    <a href="">
+        <img src="Icons/power-button-gold.svg" alt="" class="power">
+    </a>
+    <div class="datetime">
+        <div id="time" style="text-align: center;font-size: 36px;"></div>
         <div id="date" style="text-align: center;"></div>
     </div>
     <div class="box">
@@ -252,27 +233,27 @@
     </div>
     <script>
 
-setInterval(()=>{
+        setInterval(()=>{
             
-            let n = new Date();
-            let y = n.getFullYear();
-    
-            let m = n.getMonth() + 1;
-    
-            let d = n.getDate();
-    
-            let h = n.getHours();
-            let mm = n.getMinutes();
-    
-            let date = d + '-' + m + '-' + y;
-            
-            h = h < 10 ? "0" + h : h;
-            mm = mm < 10 ? "0" + mm : mm;
-            
-            let time = h +":"+ mm;
-            document.getElementById("time").innerHTML = time;
-            document.getElementById("date").innerHTML = date;
-            });
+        let n = new Date();
+        let y = n.getFullYear();
+
+        let m = n.getMonth() + 1;
+
+        let d = n.getDate();
+
+        let h = n.getHours();
+        let mm = n.getMinutes();
+
+        let date = d + '-' + m + '-' + y;
+        
+        h = h < 10 ? "0" + h : h;
+        mm = mm < 10 ? "0" + mm : mm;
+        
+        let time = h +":"+ mm;
+        document.getElementById("time").innerHTML = time;
+        document.getElementById("date").innerHTML = date;
+        });
     </script>
 </body>
 </html>

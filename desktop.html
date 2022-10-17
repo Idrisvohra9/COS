@@ -21,16 +21,16 @@
     <div
       class="clickable-area"
       ondblclick="ShowDesktopDialog(event)"
-      onclick="this.children[0].style.display='none';closeContainer();"
+      onclick="this.children[0].style.display='none';touch();"
     >
       <div class="desktop-dialog"></div>
     </div>
     <!-- The Modal -->
-    <div class="modal" id="myModal">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark">
           <!-- Modal Header -->
-          <div class="modal-header">
+          <div class="modal-header text-light">
             <h4 class="modal-title">Change Background:</h4>
             <button
               type="button"
@@ -40,7 +40,17 @@
           </div>
 
           <!-- Modal body -->
-          <div class="modal-body">Modal body..</div>
+          <div class="modal-body text-light">
+            <h5>
+              Choose From the list
+            </h5>
+            <div class="wallpapersList mb-4">
+              <img src="Wallpapers/ngn1.png" alt="" class="wallpapers" onclick="selectBackground(this)">
+              <img src="Wallpapers/ngn2.png" alt="" class="wallpapers" onclick="selectBackground(this)">
+              <img src="Wallpapers/ngn33.png" alt="" class="wallpapers" onclick="selectBackground(this)">
+              <img src="Wallpapers/JS_login_background.jpg" alt="" class="wallpapers" onclick="selectBackground(this)">
+            </div>
+          </div>
 
           <!-- Modal footer -->
           <div class="modal-footer">

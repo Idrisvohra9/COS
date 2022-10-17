@@ -25,7 +25,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Satisfy"
     />
-  </head>
+  </head> 
   <body id="main">
     <!-- notification bar -->
     <div id="notifBar">
@@ -220,9 +220,21 @@
       id="desktop"
     ></a>
     <!-- Dialog containers -->
-    <div class="notif-dialogs dialogs"></div>
+    <div class="offcanvas offcanvas-start text-bg-dark notif-dialogs" id="notifDialog">
+      <div class="offcanvas-header">
+        <h1 class="offcanvas-title">Heading</h1>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <p>Some text lorem ipsum.</p>
+        <p>Some text lorem ipsum.</p>
+        <p>Some text lorem ipsum.</p>
+        <button class="btn btn-secondary" type="button">A Button</button>
+      </div>
+    </div>
+    
 
-    <div id="moreOpts" class="dialogs">
+    <div id="moreOpts" >
       <img
         src="Icons/close-svgrepo-com.svg"
         onclick="closeDialog(this);"
@@ -241,7 +253,7 @@
       </a>
     </div>
 
-    <div id="powerOpts" class="dialogs">
+    <div id="powerOpts" >
       <img
         src="Icons/close-svgrepo-com.svg"
         onclick="closeDialog(this);"
@@ -271,7 +283,7 @@
       </a>
     </div>
 
-    <div id="appsContainer" class="dialogs">
+    <div id="appsContainer" >
       <h2 style="align-self: flex-start">App list:</h2>
 
       <a onclick="this.setAttribute('href','Applications/COS Console.html')" target="Frame">
@@ -321,11 +333,27 @@
         <h3>In Development:</h3>
         <a>
           <img src="Icons/store-svgrepo-com.svg" alt="" class="app-icons" />
-          <span>COS APPStore</span>
+          <span>COS Store</span>
         </a>
         <a>
           <img src="Icons/video-games-joystick-svgrepo-com.svg" alt="" class="app-icons" />
           <span>Game Zone</span>
+        </a>
+        <a>
+          <img src="Icons/paint-brush-paintbrush-svgrepo-com.svg" alt="" class="app-icons" />
+          <span>Theme Store</span>
+        </a>
+        <a>
+          <img src="Icons/robot-svgrepo-com.svg" alt="" class="app-icons" />
+          <span>COS Assistant</span>
+        </a>
+        <a>
+          <img src="Icons/bluebook-svgrepo-com.svg" alt="" class="app-icons" />
+          <span>User Manual</span>
+        </a>
+        <a>
+          <img src="Icons/bug-shield-svgrepo-com.svg" alt="" class="app-icons" />
+          <span>Bug Report</span>
         </a>
       </div>
     </div>
