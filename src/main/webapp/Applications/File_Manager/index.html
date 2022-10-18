@@ -1,0 +1,909 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            /* box-sizing: border-box; */
+        }
+
+        body {
+            background-color: #28282b;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            background-color: #000;
+            height: 8%;
+            width: 100%;
+            border-bottom: 1px solid transparent;
+        }
+
+        .text-value {
+            display: inline-block;
+            color: #f1f1f1;
+            font-family: Roboto;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 24px;
+        }
+
+        .panel {
+            height: 101.5%;
+            width: 13%;
+            z-index: 1;
+            background-color: blueviolet;
+            overflow-x: hidden;
+            padding-top: 20px;
+            border-radius: 5px;
+        }
+
+        .panel a,
+        .option {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #fff;
+            display: block;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .panel a:hover,
+        .option:hover {
+            color: #f1f1f1;
+        }
+
+        .content {
+            display: none;
+            background-color: #262626;
+            padding-left: 8px;
+        }
+
+        .down {
+            float: right;
+            padding-right: 8px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .panel {
+                padding-top: 15px;
+            }
+
+            .panel a {
+                font-size: 18px;
+            }
+        }
+
+        ul {
+            font-family: Roboto;
+            list-style-type: none;
+            background-color: blueviolet;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            font-size: 20px;
+            margin: 10px 0px;
+        }
+
+        li a {
+            color: #000;
+            text-decoration: none;
+            padding: 8px 16px;
+            display: block;
+        }
+
+        li a:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        #active {
+            background-color: black;
+            color: white;
+        }
+
+
+        li a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+
+        .bottom-line {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .drive {
+            position: absolute;
+            top: 14%;
+            left: 20%;
+            background-color: #f1f1f1;
+            width: 8%;
+            height: 13%;
+            box-shadow: 8px 16px 16px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px;
+            font-size: 9px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .drive img {
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .drive:hover img {
+            background-color: white;
+        }
+
+        .drive:hover {
+            background-color: blueviolet;
+            position: absolute;
+            font-size: 10px;
+            width: 9%;
+            height: 16%;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .dbox {
+            position: absolute;
+            top: 14%;
+            left: 36%;
+            background-color: #f1f1f1;
+            width: 8%;
+            height: 13%;
+            box-shadow: 8px 16px 16px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px;
+            font-size: 9px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .dbox img {
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .dbox:hover img {
+            background-color: white;
+        }
+
+        .dbox:hover {
+            background-color: blueviolet;
+            position: absolute;
+            font-size: 10px;
+            width: 9%;
+            height: 16%;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .odrive {
+            position: absolute;
+            top: 14%;
+            left: 52%;
+            background-color: #f1f1f1;
+            width: 8%;
+            height: 13%;
+            box-shadow: 8px 16px 16px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px;
+            font-size: 9px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .odrive img {
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .odrive:hover img {
+            background-color: white;
+        }
+
+        .odrive:hover {
+            background-color: blueviolet;
+            position: absolute;
+            font-size: 10px;
+            width: 9%;
+            height: 16%;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .heading {
+            position: absolute;
+            top: 41%;
+            left: 22%;
+            display: flex;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: grey;
+        }
+
+        .heading h5 {
+            display: flex;
+            position: absolute;
+            left: 520%;
+            top: 40%;
+        }
+
+        .heading:hover h5 {
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .fold1 {
+            position: absolute;
+            top: 47%;
+            left: 20%;
+            background-color: #eead0e;
+            width: 8%;
+            height: 8%;
+            box-shadow: 8px 16px 16px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px;
+            font-size: 9px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .fold1 img {
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .fold1:hover img {
+            background-color: white;
+        }
+
+        .fold1:hover {
+            background-color: blueviolet;
+            position: absolute;
+            font-size: 10px;
+            width: 9%;
+            height: 9%;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .fold2 {
+            position: absolute;
+            top: 47%;
+            left: 36%;
+            background-color: #eead0e;
+            width: 8%;
+            height: 8%;
+            box-shadow: 8px 16px 16px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px;
+            font-size: 9px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .fold2 img {
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .fold2:hover img {
+            background-color: white;
+        }
+
+        .fold2:hover {
+            background-color: blueviolet;
+            position: absolute;
+            font-size: 10px;
+            width: 9%;
+            height: 9%;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .fold3 {
+            position: absolute;
+            top: 47%;
+            left: 52%;
+            background-color: #eead0e;
+            width: 8%;
+            height: 8%;
+            box-shadow: 8px 16px 16px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px;
+            font-size: 9px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .fold3 img {
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .fold3:hover img {
+            background-color: white;
+        }
+
+        .fold3:hover {
+            background-color: blueviolet;
+            position: absolute;
+            font-size: 10px;
+            width: 9%;
+            height: 9%;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .heading2 {
+            position: absolute;
+            top: 68%;
+            left: 22%;
+            display: flex;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: grey;
+        }
+
+        .heading2 h5 {
+            display: flex;
+            position: absolute;
+            left: 316%;
+            top: 40%;
+        }
+
+        .heading2:hover h5 {
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .heading3 {
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            position: absolute;
+            top: 77%;
+            left: 21%;
+            color: aliceblue;
+        }
+
+        .heading3 h3 {
+            padding: 0px 70px;
+        }
+
+        .rec1
+        {
+            position: absolute;
+            top: 84%;
+            left: 20%;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .rec1 h2{
+            color: aliceblue;
+            position: absolute;
+            left: 100%;
+            top: 30%;
+            font-size: 18px;
+        }
+
+        .rec1 h3{
+            position: absolute;
+            left: 570%;
+            top: 30%;
+            font-size: 15px;
+            color: #818181;
+        }
+
+        .rec1 h4{
+            position: absolute;
+            left: 1150%;
+            top: 30%;
+            font-size: 15px;
+            color: #818181;
+        }
+        
+        .rec2
+        {
+            position: absolute;
+            top: 92%;
+            left: 20%;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .rec2 h2{
+            color: aliceblue;
+            position: absolute;
+            left: 100%;
+            top: 30%;
+            font-size: 18px;
+        }
+
+        .rec2 h3{
+            position: absolute;
+            left: 570%;
+            top: 30%;
+            font-size: 15px;
+            color: #818181;
+        }
+
+        .rec2 h4{
+            position: absolute;
+            left: 1150%;
+            top: 30%;
+            font-size: 15px;
+            color: #818181;
+        }
+
+        .rec3
+        {
+            position: absolute;
+            top: 100%;
+            left: 20%;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .rec3 h2{
+            color: aliceblue;
+            position: absolute;
+            left: 100%;
+            top: 30%;
+            font-size: 18px;
+        }
+
+        .rec3 h3{
+            position: absolute;
+            left: 570%;
+            top: 30%;
+            font-size: 15px;
+            color: #818181;
+        }
+
+        .rec3 h4{
+            position: absolute;
+            left: 1135%;
+            top: 30%;
+            font-size: 15px;
+            color: #818181;
+        }
+
+        .rpanel {
+            position: absolute;
+            left: 72.1%;
+            top: 5.6%;
+            background-color: blueviolet;
+            width: 15%;
+            height: 91%;
+            padding: 50px;
+            margin: 20px;
+            border-radius: 5px;
+            color: #fff;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .storage {
+            transform: rotate(90deg);
+            height: 30%;
+            width: 70%;
+            background-color: transparent;
+            position: absolute;
+            top: 5%;
+        }
+
+        .image {
+            position: absolute;
+            top: 27%;
+            left: 25%;
+        }
+
+        .image img {
+            position: absolute;
+            top: 2px;
+            left: -50px;
+        }
+
+        .image h3 {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+
+        .image p {
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            font-size: 9px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .document {
+            position: absolute;
+            top: 35%;
+            left: 25%;
+        }
+
+        .document img {
+            position: absolute;
+            top: 2px;
+            left: -50px;
+        }
+
+        .document h3 {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+
+        .document p {
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            font-size: 9px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .media {
+            position: absolute;
+            top: 43%;
+            left: 25%;
+        }
+
+        .media img {
+            position: absolute;
+            top: 2px;
+            left: -50px;
+        }
+
+        .media h3 {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+
+        .media p {
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            font-size: 9px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .other {
+            position: absolute;
+            top: 51%;
+            left: 25%;
+        }
+
+        .other img {
+            position: absolute;
+            top: 2px;
+            left: -50px;
+        }
+
+        .other h3 {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+
+        .other p {
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            font-size: 9px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .unknown {
+            position: absolute;
+            top: 59%;
+            left: 25%;
+        }
+
+        .unknown img {
+            position: absolute;
+            top: 2px;
+            left: -50px;
+        }
+
+        .unknown h3 {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+
+        .unknown p {
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            font-size: 9px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .btn {
+            position: absolute;
+            top: 72%;
+            left: 33%;
+        }
+
+        .btn button {
+            background-color: #262626;
+            padding: 12px;
+            border-radius: 5px;
+            color: #f1f1f1;
+            border: none;
+            width: 100%;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn:hover button{
+            background-color: black;
+
+        }
+
+        .plus {
+            padding: 5px 10px;
+            margin-left: 20px;
+            font-size: 20px;
+            background-color: lightslategrey;
+            border-radius: 2px;
+            opacity: 0.8;
+        }
+
+        .x
+        {
+            position: absolute;
+            left: 96%;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-decoration: none;
+            background-color: red;
+            color: aliceblue;
+            margin: 10px;
+            padding: 12px;
+            text-align: center;
+            border-radius: 5px;
+            height: 12px;
+            width: 12px;
+        }
+
+        .x:hover
+        {
+            background-color: red;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <div class="text-value">File Manager</div>
+        <a href="#" class="x">X</a>
+    </div>
+    <div class="panel">
+        <ul>
+            <li>
+                <a href='#home' id='active' class='option' style="font-weight:bold;">System<i class="down"></i></a>
+            </li>
+            <li>
+                <a href='#file' class='option'>Files<i class="down"></i></a>
+                <div class='content'>
+                    <a class='bottom-line' href='#file'>Analytics</a>
+                    <a class='bottom-line' href='#file'>Assets</a>
+                    <a class='bottom-line' href='#file'>Marketing</a>
+                </div>
+            </li>
+            <li>
+                <a href='#doc' class='option'>Documents<i class="down"></i></a>
+                <div class='content'>
+                    <a class='bottom-line' href='#doc'>Templates</a>
+                    <a class='bottom-line' href='#doc'>Fax</a>
+                    <a class='bottom-line' href='#doc'>Scanned Docs</a>
+                </div>
+            </li>
+            <li>
+                <a href='#dow' class='option'>Downloads<i class="down"></i></a>
+                <div class='content'>
+                    <a class='bottom-line' href='#dow'>Apps</a>
+                    <a class='bottom-line' href='#dow'>Documents</a>
+                    <a class='bottom-line' href='#dow'>Files</a>
+                    <a class='bottom-line' href='#dow'>Images</a>
+                    <a class='bottom-line' href='#dow'>Videos</a>
+                </div>
+            </li>
+            <li>
+                <a href='#pic' class='option'>Pictures<i class="down"></i></a>
+                <div class='content'>
+                    <a class='bottom-line' href='#pic'>Camera</a>
+                    <a class='bottom-line' href='#pic'>Saved Pictures</a>
+                    <a class='bottom-line' href='#pic'>Screenshots</a>
+                </div>
+            </li>
+            <li>
+                <a href='#vid' class='option'>Videos<i class="down"></i></a>
+                <div class='content'>
+                    <a class='bottom-line' href='#vid'>Camera Roll</a>
+                    <a class='bottom-line' href='#vid'>Recording</a>
+                    <a class='bottom-line' href='#vid'>Saved Videos</a>
+                </div>
+            </li>
+            <li>
+                <a href='#'>Exit</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class='drive'>
+        <img src="drive.svg">
+        <h1>Google Drive</h1>
+        <br>
+        <p>45.5 GB out of 50.0 GB</p>
+    </div>
+
+    <div class='dbox'>
+        <img src="onebox.svg">
+        <h1>Drop Box</h1>
+        <br>
+        <p>1.2 GB out of 3.0 GB</p>
+    </div>
+
+    <div class='odrive'>
+        <img src="onedrive.svg">
+        <h1>OneDrive</h1>
+        <br>
+        <p>2.5 GB out of 5.0 GB</p>
+    </div>
+
+    <div class="heading">
+        <h1>Folders</h1>
+        <h5>View_all</h5>
+    </div>
+
+    <div class="fold1">
+        <img src="folder.svg">
+        <h1>Analytics</h1>
+        <p>15 files</p>
+    </div>
+
+    <div class="fold2">
+        <img src="folder.svg">
+        <h1>Assets</h1>
+        <p>345 files</p>
+    </div>
+
+    <div class="fold3">
+        <img src="folder.svg">
+        <h1>Marketing</h1>
+        <p>143 files</p>
+    </div>
+
+    <div class="heading2">
+        <h1>Recent Files</h1>
+        <h5>View_all</h5>
+    </div>
+
+    <div class="heading3">
+        <h3>Name</h3>
+        <h3>Members</h3>
+        <h3>Last Modified</h3>
+    </div>
+
+    <div class="rec1">
+        <img src="other.svg">
+        <h2>Project_Documents</h2>
+        <h3>Only_you</h3>
+        <h4>17/8/2022</h4>
+    </div>
+
+    <div class="rec2">
+        <img src="pdf.png">
+        <h2>Meeting_Report</h2>
+        <h3>Members:5</h3>
+        <h4>28/9/2022</h4>
+    </div>
+
+    <div class="rec3">
+        <img src="doc.svg">
+        <h2>Template_Analystic</h2>
+        <h3>Only_you</h3>
+        <h4>16/10/2022</h4>
+    </div>
+
+    <div class="rpanel">
+        <img src="storage.svg" class="storage">
+        <h1><span style="color:#fff;">45.5 GB</span> &emsp;&ensp; <span style="color:#000;">50.0 GB</span></h1>
+        <br>
+        <h4><span style="color: #000;">Used</span>
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp; <span
+                style="color: #fff;">Upgrade</span></h4>
+
+        <div class="image">
+            <img src="image.png">
+            <h3>Images</h3>
+            <p>1756_files</p>
+            <h3 style="color: #000;position: absolute;top: 10px;left:170px;">15.3GB</h3>
+        </div>
+
+        <div class="document">
+            <img src="doc.svg">
+            <h3>Documents</h3>
+            <p>123_files</p>
+            <h3 style="color:#000;position: absolute;top: 10px;left:170px;">256MB</h3>
+        </div>
+
+        <div class="media">
+            <img src="media.png">
+            <h3>Media_Files</h3>
+            <p>24_files</p>
+            <h3 style="color:#000;position: absolute;top: 10px;left:170px;">3.4GB</h3>
+        </div>
+
+        <div class="other">
+            <img src="other.svg">
+            <h3>Other_Files</h3>
+            <p>454_files</p>
+            <h3 style="color:#000;position: absolute;top: 10px;left:170px;">3GB</h3>
+        </div>
+
+        <div class="unknown">
+            <img src="pdf.png">
+            <h3>PDF_Files</h3>
+            <p>57_files</p>
+            <h3 style="color:#000;position: absolute;top: 10px;left:170px;">175MB</h3>
+        </div>
+
+        <div class="btn">
+            <button>Create New <span class="plus">+</span></button>
+        </div>
+    </div>
+
+
+    <script>
+        /* Toggle down for panel. */
+        var opt = document.getElementsByClassName("option");
+        var i;
+
+        for (i = 0; i < opt.length; i++) {
+            opt[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
