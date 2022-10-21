@@ -15,7 +15,6 @@
   --pink: #f50057;
   --red: #ff1744;
   --orange: #ff9100;
-  --yellow: #ffea00;
   --green: #00e676;
   --teal: #1de9b6;
   --cyan: #00e5ff;
@@ -29,6 +28,7 @@
   --warning: #ffea00;
   --danger: #ff1744;
   --light: #ECEFF1;
+  --yellow: #ffea00;
   --dark: #11171a;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;

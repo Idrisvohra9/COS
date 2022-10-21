@@ -166,7 +166,7 @@
           <img src="Icons/contacts-svgrepo-com.svg" alt="" class="app-icons" />
         </a>
         <a
-          onclick="this.setAttribute('href','Applications/File_Manager/index.html');openApp(event)"
+          onclick="this.setAttribute('href','Applications/File_Manager_/index.html');openApp(event)"
           class="apps"
           target="Frame"
           onclick="openApp(event)"
@@ -296,7 +296,12 @@
         <span>Calculator</span>
       </a>
 
-      <a onclick="this.setAttribute('href','Applications/File_Manager/index.html')" target="Frame">
+	  <a onclick="this.setAttribute('href','Applications/Todo_list/index.html')" target="Frame">
+        <img src="Icons/todo-svgrepo-com.svg" alt="" class="app-icons" />
+        <span>TODO</span>
+      </a>
+      
+      <a onclick="this.setAttribute('href','Applications/File_Manager_/index.html')" target="Frame">
         <img
           src="Icons/files-folder-svgrepo-com.svg"
           alt=""
@@ -305,7 +310,7 @@
         <span>File Manager</span>
       </a>
 
-      <a onclick="this.setAttribute('href','Applications/')" target="Frame">
+      <a onclick="this.setAttribute('href','Applications/COS_Browser.html')" target="Frame">
         <img src="Icons/browser-svgrepo-com.svg" alt="" class="app-icons" />
         <span>COS Browser</span>
       </a>

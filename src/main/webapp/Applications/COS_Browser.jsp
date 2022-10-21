@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <html lang="en-IN">
@@ -97,14 +99,14 @@
     >
       <img src="Images/OS_sticker 4k.png" alt="" class="m-lg-5 rounded-4 sticker" />
 
-      <form action="GoogleSearchRedirector" method="Post" class="container">
+      <form class="container" action="COS_Browser.jsp">
         <input
           type="text"
           class="searchBar"
           placeholder="Search..."
           name="SearchInput"
         />
-        <input type="submit" value="🔍" class="searchBtn" />
+        <input type="button" value="⇥ " class="searchBtn" onclick="Search();"/>
       </form>
       <span class="mt-3 alert text-success"> External Links: </span>
       <div
@@ -124,9 +126,15 @@
         </a>
         <a href="http:\\www.drive.google.com" target="_blank" class="l">
           <img src="Images/google-drive-social-media-svgrepo-com.svg" alt="" />
-          <span>TMC</span>
+          <span>Drive</span>
         </a>
       </div>
     </div>
+    <script>
+    function Search(){
+    	const Search = document.getElementsByClassName("searchBar")[0].value;
+    	location.assign("https://www.google.com/search?q="+Search)
+    }
+    </script>
   </body>
 </html>
