@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+<%@page import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*, java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -203,10 +207,16 @@
             filter: drop-shadow(0 0 5px goldenrod);
             padding:0;
         }
+        .link{
+        	color:#161515;
+        	background-color:goldenrod;
+        	display:flex;
+        	justify-content:center;
+        }
     </style>
 </head>
 <body>
-    <a href="">
+    <a href="ShutDown.html">
         <img src="Icons/power-button-gold.svg" alt="" class="power">
     </a>
     <div class="datetime">
@@ -214,25 +224,74 @@
         <div id="date" style="text-align: center;"></div>
     </div>
     <div class="box">
+    <form method="post">
         <div class="form">
             <div class="inputBox">
-                <input type="text" required>
+                <input type="text" name="name" required>
                 <span>Username</span>
                 <i></i>
             </div>
             <div class="inputBox">
-                <input type="password" required>
+                <input type="password" name="pass" required maxlength="6">
                 <span>Password</span>
                 <i></i>
             </div>
             <div class="links">
                 <a href="#">Forgot password</a>
             </div>
-            <a href="Desktop.html" class='login'>Log in</a>
+            <input type="submit" value="Enter" class="login">
+            <a href="NewUser.jsp" class="link">Create a new account?</a>
         </div>
+    </form>
+    <% 
+    	java.util.Date d = new java.util.Date();
+    	String Uname = request.getParameter("name");
+    	String Pass = request.getParameter("pass");
+    	session.setAttribute("Username",Uname);
+    	session.setAttribute("loginTime", String.format("%d:%d:%d",d.getHours(),d.getMinutes(),d.getSeconds()));
+    	if((Uname!= null && Uname.length() >= 3) && (Pass!=null && Pass.length() == 6)){
+            try{
+        		Class.forName("com.mysql.cj.jdbc.Driver");
+        		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/COS_DB", "root", "idrisvohra987");
+        		
+        		PreparedStatement smt = c.prepareStatement("SELECT USERNAME, PASS FROM EXISTINGUSER;");
+        		ResultSet rs = smt.executeQuery();
+        		int Exists =0;
+        		while (rs.next()) {
+        			String USERNAME = rs.getString("USERNAME");
+        			String PASSWORD = rs.getString("PASS");
+        			if(Uname.equals(USERNAME)){
+        				Exists = 1;
+        			}
+        			else{
+        				Exists = 0;
+        			}
+        			if(Pass.equals(PASSWORD)){
+        				Exists = 1;
+        			}
+        			else{
+        				Exists = 2;
+        			}
+        		}
+        		if(Exists == 1){
+        			RequestDispatcher rd = request.getRequestDispatcher("Main.jsp");
+					rd.forward(request,response);
+        		}
+        		
+        		else if(Exists == 0){
+        			out.print("<h5>The enetered username does'nt exist.</h5>");
+        		}
+        		else if(Exists == 2){
+        			out.print("<h5>The password is incorrect 5 tries left.</h5>");
+        		}
+            } catch(ClassNotFoundException | SQLException e) {
+        		out.print("Server Side error occured: "+e.toString());
+        	}
+          }
+    	
+    %>
     </div>
     <script>
-
         setInterval(()=>{
             
         let n = new Date();
@@ -254,6 +313,8 @@
         document.getElementById("time").innerHTML = time;
         document.getElementById("date").innerHTML = date;
         });
+        
+        
     </script>
 </body>
 </html>

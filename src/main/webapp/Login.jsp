@@ -1,3 +1,8 @@
+<%@page import="com.mysql.cj.xdevapi.Session"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+<%@page import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -433,7 +438,7 @@
             <figure>
               <img src="Icons/JS_logo_transparent.png" alt="logo image" />
             </figure>
-            <a href="newuser.html" class="link">Create an account</a>
+            <a href="NewUser.jsp" class="link">Create an account</a>
           </div>
 
           <div class="form">
@@ -458,6 +463,7 @@
                   id="name"
                   placeholder="Your Name"
                   maxlength="15"
+                  required
                 />
                 <div class="valid-feedback">
                   Username must be under 15 characters. Should not contain any
@@ -478,13 +484,39 @@
               <div class="btn">
                 <input
                   type="submit"
-                  name="signin"
-                  id="signin"
                   class="subbtn"
                   value="Log in"
                 />
               </div>
             </form>
+            <%
+            String Uname = request.getParameter("name");
+            if(Uname!= null && Uname.length() >= 3){
+	            try{
+	        		Class.forName("com.mysql.cj.jdbc.Driver");
+	        		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/COS_DB", "root", "idrisvohra987");
+	        		
+	        		PreparedStatement smt = c.prepareStatement("SELECT USERNAME FROM EXISTINGUSER;");
+	        		ResultSet rs = smt.executeQuery();
+	        		int Exists =0;
+	        		while (rs.next()) {
+	        			String USERNAME = rs.getString("USERNAME");
+	        			if(Uname.equals(USERNAME)){
+	        				Exists = 1;
+	        			}
+	        		}
+	        		if(Exists == 0){
+	        			out.print("<h6 style='color:Red;'>THE ENTERED USERNAME DOES NOT EXIST CONSIDER MAKING A NEW ACCOUNT.</h6>");
+	        		}
+	        		else{
+	        			RequestDispatcher rd = request.getRequestDispatcher("LockScreen.jsp");
+						rd.forward(request,response);
+	        		}
+	            } catch(ClassNotFoundException | SQLException e) {
+	        		out.print("Server Side error occured: "+e.toString());
+	        	}
+	          }
+            %>
             <div class="social-login">
               <span class="social-label">Or login with</span>
               <ul class="socials">

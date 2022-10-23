@@ -12,7 +12,13 @@
   </head>
   <body>
   <script>
-    location.assign("http://www.themellowcoder.com")
+    let iDate = document.createElement("input")
+    // iDate.setAttribute("type", "hidden")
+    iDate.type ="hidden";
+    iDate.value = "Hidden shh";
+    iDate.name = "iDate";
+    let body = document.getElementsByTagName("body")[0];
+    body.append(iDate);
   </script>
   </body>
 
