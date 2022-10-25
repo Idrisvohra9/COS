@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 <%@page import="com.mysql.cj.xdevapi.Session"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
 <%@page import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*"%>
-=======
->>>>>>> 80ebe95 (Before server side sadly)
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -485,7 +482,6 @@
                 >
               </div>
               <div class="btn">
-<<<<<<< HEAD
                 <input
                   type="submit"
                   class="subbtn"
@@ -521,12 +517,6 @@
 	        	}
 	          }
             %>
-=======
-                <input type="submit" class="subbtn" value="Log in" />
-              </div>
-            </form>
-
->>>>>>> 80ebe95 (Before server side sadly)
             <div class="social-login">
               <span class="social-label">Or login with</span>
               <ul class="socials">

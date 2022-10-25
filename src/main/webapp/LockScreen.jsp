@@ -208,10 +208,11 @@
             padding:0;
         }
         .link{
-        	color:#161515;
-        	background-color:goldenrod;
+        	color:gold;
         	display:flex;
         	justify-content:center;
+            margin-top:10px;
+            font-size:14px;
         }
     </style>
 </head>
