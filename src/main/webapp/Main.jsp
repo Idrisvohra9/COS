@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%> <%@page
+import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*, java.util.*"%>
 <!DOCTYPE html>
 
 <html lang="en-IN">
@@ -17,7 +18,10 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      type="text/javascript"
+    ></script>
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="Main.css" />
@@ -180,9 +184,8 @@
             class="app-icons"
           />
         </a>
-
         <a
-          onclick="this.setAttribute('href','Applications/COS_Browser.html');openApp(event)"
+          onclick="this.setAttribute('href','Applications/COS_Browser.jsp');openApp(event)"
           class="apps"
           target="Frame"
           onclick="openApp(event)"
@@ -222,24 +225,37 @@
       id="desktop"
     ></a>
     <!-- Dialog containers -->
-    <div id="notif-dialogs"></div>
+    <div id="notif-dialogs">
+      <div class="display1">
+        <h3>User Info:</h3>
+        <img src="Icons/close-svgrepo-com.svg" onclick="closeDialog(this);" />
+        <hr />
+      </div>
+      <div class="display2">
+        <ul>
+          <li>Name: Idris</li>
+          <li>Uid: 001</li>
+          <li>Group: Admin</li>
+          <li>Permissions: All~</li>
+          <li>Authority: <span style="color: red">root~</span></li>
+        </ul>
+      </div>
+    </div>
 
     <div id="moreOpts">
       <img
         src="Icons/close-svgrepo-com.svg"
         onclick="closeDialog(this);"
         style="position: absolute; top: 0; right: 0"
+        alt=""
       />
       <div>Notifications:</div>
       <div class="notif">No new Notifications.</div>
       <a onclick="this.setAttribute('href','Settings.html')">
-        <img src="Icons/setting-svgrepo-com.svg" alt="" />
-        <span>Settings</span>
+        <img src="Icons/setting-svgrepo-com.svg" alt="" /> <span>Settings</span>
       </a>
-
       <a onclick="this.setAttribute('href','LockScreen.html')">
-        <img src="Icons/user-svgrepo-com.svg" alt="" />
-        <span>Change User</span>
+        <img src="Icons/user-svgrepo-com.svg" alt="" /> <span>Change User</span>
       </a>
     </div>
 
@@ -248,53 +264,57 @@
         src="Icons/close-svgrepo-com.svg"
         onclick="closeDialog(this);"
         style="position: absolute; top: 0; right: 0"
+        alt=""
       />
       <a onclick="this.setAttribute('href','Sleep_Mode.html')">
-        <img src="Icons/sleep-svgrepo-com.svg" alt="" />
-        <span>Sleep mode</span>
+        <img src="Icons/sleep-svgrepo-com.svg" alt="" /> <span>Sleep mode</span>
       </a>
-
       <a onclick="this.setAttribute('href','ShutDown.html')">
-        <img src="Icons/power button.svg" alt="" />
-        <span>Shut down</span>
+        <img src="Icons/power button.svg" alt="" /> <span>Shut down</span>
       </a>
-
       <a onclick="this.setAttribute('href','LockScreen.html')">
-        <img src="Icons/lock-svgrepo-com.svg" alt="" />
-        <span>Lock</span>
+        <img src="Icons/lock-svgrepo-com.svg" alt="" /> <span>Lock</span>
       </a>
-
       <a
         style="border: none"
         onclick="this.setAttribute('href','ShutDown.html')"
       >
-        <img src="Icons/refresh-svgrepo-com.svg" alt="" />
-        <span>Restart</span>
+        <img src="Icons/refresh-svgrepo-com.svg" alt="" /> <span>Restart</span>
       </a>
     </div>
 
     <div id="appsContainer">
       <h2 style="align-self: flex-start">App list:</h2>
 
-      <a onclick="this.setAttribute('href','Applications/COS Console.html')" target="Frame">
+      <a
+        onclick="this.setAttribute('href','Applications/COS Console.html')"
+        target="Frame"
+      >
         <img src="Icons/console-svgrepo-com.svg" alt="" class="app-icons" />
         <span>COS Console</span>
       </a>
-
-      <a onclick="this.setAttribute('href','Applications/notes.html')" target="Frame">
+      <a
+        onclick="this.setAttribute('href','Applications/notes.html')"
+        target="Frame"
+      >
         <img src="Icons/note-svgrepo-com.svg" alt="" class="app-icons" />
         <span>Notes</span>
       </a>
-
-      <a onclick="this.setAttribute('href','Applications/Contact Book/index.html')" target="Frame">
+      <a
+        onclick="this.setAttribute('href','Applications/Contact Book/index.html')"
+        target="Frame"
+      >
         <img src="Icons/contacts-svgrepo-com.svg" alt="" class="app-icons" />
         <span>Contact Book</span>
       </a>
-
-      <a onclick="this.setAttribute('href','Applications/Calculator/index.html')" target="Frame">
+      <a
+        onclick="this.setAttribute('href','Applications/Calculator/index.html')"
+        target="Frame"
+      >
         <img src="Icons/calculator-svgrepo-com.svg" alt="" class="app-icons" />
         <span>Calculator</span>
       </a>
+<<<<<<< HEAD
 
 	  <a onclick="this.setAttribute('href','Applications/Todo_list/index.html')" target="Frame">
         <img src="Icons/todo-svgrepo-com.svg" alt="" class="app-icons" />
@@ -302,6 +322,19 @@
       </a>
       
       <a onclick="this.setAttribute('href','Applications/File_Manager_/index.html')" target="Frame">
+=======
+      <a
+        onclick="this.setAttribute('href','Applications/Todo_list/index.html')"
+        target="Frame"
+      >
+        <img src="Icons/todo-svgrepo-com.svg" alt="" class="app-icons" />
+        <span>TODO</span>
+      </a>
+      <a
+        onclick="this.setAttribute('href','Applications/File_Manager_/index.html')"
+        target="Frame"
+      >
+>>>>>>> 80ebe95 (Before server side sadly)
         <img
           src="Icons/files-folder-svgrepo-com.svg"
           alt=""
@@ -309,18 +342,29 @@
         />
         <span>File Manager</span>
       </a>
+<<<<<<< HEAD
 
       <a onclick="this.setAttribute('href','Applications/COS_Browser.html')" target="Frame">
+=======
+      <a
+        onclick="this.setAttribute('href','Applications/COS_Browser.jsp')"
+        target="Frame"
+      >
+>>>>>>> 80ebe95 (Before server side sadly)
         <img src="Icons/browser-svgrepo-com.svg" alt="" class="app-icons" />
         <span>COS Browser</span>
       </a>
-
-      <a onclick="this.setAttribute('href','Applications/WebCam_App.html')" target="Frame">
+      <a
+        onclick="this.setAttribute('href','Applications/WebCam_App.html')"
+        target="Frame"
+      >
         <img src="Icons/camera-svgrepo-com.svg" alt="" class="app-icons" />
         <span>WebCam App</span>
       </a>
-
-      <a onclick="this.setAttribute('href','Applications/Paint_app/index.html')" target="Frame">
+      <a
+        onclick="this.setAttribute('href','Applications/Paint_app/index.html')"
+        target="Frame"
+      >
         <img src="Icons/paint-svgrepo-com.svg" alt="" class="app-icons" />
         <span>Paint</span>
       </a>
@@ -331,11 +375,19 @@
           <span>COS Store</span>
         </a>
         <a>
-          <img src="Icons/video-games-joystick-svgrepo-com.svg" alt="" class="app-icons" />
+          <img
+            src="Icons/video-games-joystick-svgrepo-com.svg"
+            alt=""
+            class="app-icons"
+          />
           <span>Game Zone</span>
         </a>
         <a>
-          <img src="Icons/paint-brush-paintbrush-svgrepo-com.svg" alt="" class="app-icons" />
+          <img
+            src="Icons/paint-brush-paintbrush-svgrepo-com.svg"
+            alt=""
+            class="app-icons"
+          />
           <span>Theme Store</span>
         </a>
         <a>
@@ -347,7 +399,11 @@
           <span>User Manual</span>
         </a>
         <a>
-          <img src="Icons/bug-shield-svgrepo-com.svg" alt="" class="app-icons" />
+          <img
+            src="Icons/bug-shield-svgrepo-com.svg"
+            alt=""
+            class="app-icons"
+          />
           <span>Bug Report</span>
         </a>
       </div>
@@ -358,7 +414,7 @@
     <!-- Message display -->
     <div id="msg"></div>
 
-    <iframe src="" frameborder="0" class="mainFrame" name="Frame"></iframe>
+    <iframe src="" class="mainFrame" name="Frame"></iframe>
 
     <!-- JS -->
     <script src="Main.js"></script>

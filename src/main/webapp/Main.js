@@ -49,24 +49,6 @@ function ShowDesktopDialog(e) {
 
 function showUserInfo() {
   notifDialog.style.display = "flex";
-
-  notifDialog.innerHTML =
-    `
-  <div class="display1">
-        <h3>User Info:</h3>
-        <img src="Icons/close-svgrepo-com.svg" onclick="closeDialog(this);">
-        <hr />
-      </div>
-      <div class="display2">
-        <ul>
-          <li>Name: Idris</li>
-          <li>Uid: 001</li>
-          <li>Group: Admin</li>
-          <li>Permissions: All~</li>
-          <li>Authority: <span style="color: red">root~</span></li>
-        </ul>
-      </div>
-  `
 }
 
 function showDateTime(param) {
