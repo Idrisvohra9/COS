@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+<%@page import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*, java.util.*"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -380,7 +384,6 @@
                 ></label>
                 <input
                   type="password"
-                  name="re_pass"
                   id="re_pass"
                   placeholder="Repeat your password"
                   required
@@ -416,6 +419,47 @@
               </div>
               <!-- If every thing is proper it will add the information to the database -->
             </form>
+            <%
+            String Uname = request.getParameter("name");
+            String Pass = request.getParameter("pass");
+            String Email = request.getParameter("email");
+                if((Uname!= null && Uname.length() >= 3) && (Pass!=null && Pass.length() == 6)){
+                	try{
+                		Class.forName("com.mysql.cj.jdbc.Driver");
+                		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/COS_DB", "root", "idrisvohra987");
+                		
+                		PreparedStatement smt = c.prepareStatement("SELECT USERNAME FROM EXISTINGUSER;");
+    	        		ResultSet rs = smt.executeQuery();
+    	        		int Exists = 0;
+    	        		while (rs.next()) {
+    	        			String USERNAME = rs.getString("USERNAME");
+    	        			if(Uname.equals(USERNAME)){
+    	        				Exists = 1;
+    	        			}
+    	        		}
+    	        		if(Exists == 1){
+    	        			out.print("<h6 style='color:Red;width:100%;'>The username already exists to make a new account use another username or consider logging-in with existing username.</h6>");
+    	        		}
+    	        		else{
+    	        			PreparedStatement smt2 = c.prepareStatement("INSERT INTO NEWUSER(USERNAME,EMAIL,PASS) VALUES(?,?,?)");
+    	        			smt2.setString(1, Uname);
+    	        			smt2.setString(2, Email);
+    	        			smt2.setString(3, Pass);
+    	        			
+    	        			if (smt2.executeUpdate() == 1) {
+	    	        			PreparedStatement smt3 = c.prepareStatement("INSERT INTO EXISTINGUSER(USERNAME,PASS) VALUES(?,?)");
+	    	        			smt3.setString(1, Uname);
+	    	        			smt3.setString(2, Pass);
+    	        				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+    							rd.forward(request,response);
+        					}
+    	        		}
+                	}
+               		catch(ClassNotFoundException | SQLException e) {
+                   		out.print("Server Side error occured: "+e.toString());
+                   	}
+                }
+            %>
           </div>
           <div class="logo">
             <figure>

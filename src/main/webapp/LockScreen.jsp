@@ -261,17 +261,8 @@
         		while (rs.next()) {
         			String USERNAME = rs.getString("USERNAME");
         			String PASSWORD = rs.getString("PASS");
-        			if(Uname.equals(USERNAME)){
+        			if(Uname.equals(USERNAME) && Pass.equals(PASSWORD)){
         				Exists = 1;
-        			}
-        			else{
-        				Exists = 0;
-        			}
-        			if(Pass.equals(PASSWORD)){
-        				Exists = 1;
-        			}
-        			else{
-        				Exists = 2;
         			}
         		}
         		if(Exists == 1){
@@ -279,11 +270,8 @@
 					rd.forward(request,response);
         		}
         		
-        		else if(Exists == 0){
-        			out.print("<h5>The enetered username does'nt exist.</h5>");
-        		}
-        		else if(Exists == 2){
-        			out.print("<h5>The password is incorrect 5 tries left.</h5>");
+        		else {
+        			out.print("<h5>The entered user information does'nt exist! consider making a new account.</h5>");
         		}
             } catch(ClassNotFoundException | SQLException e) {
         		out.print("Server Side error occured: "+e.toString());
