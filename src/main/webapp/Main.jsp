@@ -314,7 +314,6 @@ import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*, java.util.*"%>
         <img src="Icons/calculator-svgrepo-com.svg" alt="" class="app-icons" />
         <span>Calculator</span>
       </a>
-<<<<<<< HEAD
 
 	  <a onclick="this.setAttribute('href','Applications/Todo_list/index.html')" target="Frame">
         <img src="Icons/todo-svgrepo-com.svg" alt="" class="app-icons" />
@@ -322,19 +321,6 @@ import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*, java.util.*"%>
       </a>
       
       <a onclick="this.setAttribute('href','Applications/File_Manager_/index.html')" target="Frame">
-=======
-      <a
-        onclick="this.setAttribute('href','Applications/Todo_list/index.html')"
-        target="Frame"
-      >
-        <img src="Icons/todo-svgrepo-com.svg" alt="" class="app-icons" />
-        <span>TODO</span>
-      </a>
-      <a
-        onclick="this.setAttribute('href','Applications/File_Manager_/index.html')"
-        target="Frame"
-      >
->>>>>>> 80ebe95 (Before server side sadly)
         <img
           src="Icons/files-folder-svgrepo-com.svg"
           alt=""
@@ -342,15 +328,8 @@ import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*, java.util.*"%>
         />
         <span>File Manager</span>
       </a>
-<<<<<<< HEAD
 
       <a onclick="this.setAttribute('href','Applications/COS_Browser.html')" target="Frame">
-=======
-      <a
-        onclick="this.setAttribute('href','Applications/COS_Browser.jsp')"
-        target="Frame"
-      >
->>>>>>> 80ebe95 (Before server side sadly)
         <img src="Icons/browser-svgrepo-com.svg" alt="" class="app-icons" />
         <span>COS Browser</span>
       </a>
