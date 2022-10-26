@@ -11558,3 +11558,22 @@ footer h5 {
     display: none;
   }
 }
+
+.modal-backdrop{
+	z-index:0;
+}
+.modal .modal-body{
+  	height:240px;
+  	overflow-y:scroll;
+}
+.modal .modal-body::-webkit-scrollbar{
+  	display:block;
+    width:8px;
+}
+.modal .modal-body::-webkit-scrollbar-track{
+	background-color:white;
+}
+ .modal .modal-body::-webkit-scrollbar-thumb{
+ 	background-color: rgb(21, 21, 21);
+ 	border-radius:5px;
+ }

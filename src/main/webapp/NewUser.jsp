@@ -9,11 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COS Registeration</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <style>
       :root {
       	--yellow: goldenrod;
@@ -289,6 +286,24 @@
       		text-align: center;
       	}
       }
+      .modal-backdrop{
+      	z-index:0;
+      }
+      .modal .modal-body{
+      	height:240px;
+      	overflow-y:scroll;
+      }
+      .modal .modal-body::-webkit-scrollbar{
+      	display:block;
+      	width:8px;
+      }
+      .modal .modal-body::-webkit-scrollbar-track{
+      	background-color:white;
+      }
+      .modal .modal-body::-webkit-scrollbar-thumb{
+      	background-color: rgb(21, 21, 21);
+      	border-radius:5px;
+      }
     </style>
   </head>
 
@@ -407,8 +422,37 @@
                 />
                 <label for="accept" class="label-accept">
                   I agree all statements in
-                  <a href="#" class="term-service">Terms of service</a></label
+                  <a href="#TOS" class="term-service" data-bs-toggle="modal">Terms of service</a></label
                 >
+                <div class="modal fade" id="TOS">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				
+				      <!-- Modal Header -->
+				      <div class="modal-header">
+				        <h4 class="modal-title">Terms of Service - C.O.S.</h4>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				      </div>
+				
+				      <!-- Modal body -->
+				      <div class="modal-body">
+				      	<h5 class="text-warning">Kindly Read..</h5>
+				        <p>COS is a web operating system built using HTML, CSS, JavaScript and server side coding is done using JSP.</p>
+				        <br>
+				        <p>The server side programming stores some data entered by user to database. It is used for general research and extending the user experience.</p> 
+				        <br>
+				        <p>The coding of applications, General interface, design is made by the COS team themseleves. and so it is Copyrighted by COS.</p>
+				        <p>If any of the idea or functionality is taken from COS, the user is requested to Give the Creators credit. For credit information kindly vistit About section in the COS Entry page.</p>
+				      </div>
+				
+				      <!-- Modal footer -->
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Okay</button>
+				      </div>
+				
+				    </div>
+				  </div>
+				</div>
                 <div class="invalid-feedback">
                   Check this checkbox to continue.
                 </div>
