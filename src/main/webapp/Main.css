@@ -71,7 +71,7 @@ body{
     outline: 1px solid rgb(21, 21, 21);
 }
 
-.notifIcons.active{
+.notifIcons.enabled{
     background-color: goldenrod;
     outline:2px solid black;
 }

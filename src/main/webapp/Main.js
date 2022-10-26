@@ -18,6 +18,9 @@ if (document.body.contains(desktop)) {
 }
 
 
+const notifIcons = document.getElementsByClassName("notifIcons");
+const notifDisplay = document.getElementsByClassName("display2");
+
 function ShowDesktopDialog(e) {
   let Xpos = e.clientX;
   let Ypos = e.clientY;
@@ -49,7 +52,10 @@ function ShowDesktopDialog(e) {
 
 function showUserInfo() {
   notifDialog.style.display = "flex";
+  // notifIcons[0].className+= " enabled";
 }
+
+
 
 function showDateTime(param) {
   const date = new Date();
@@ -100,13 +106,17 @@ function showBatterySaving() {
   <div class="display1">
     <div class="form-check form-switch">
       <label class="form-check-label" for="batterySaver">Battery Saver</label>
-      <input class="form-check-input" type="checkbox" id="batterySaver" />
+      <input class="form-check-input" onclick='enableBatterySaver()' type="checkbox" id="batterySaver" />
     </div>
       <img src="Icons/close-svgrepo-com.svg" onclick="closeDialog(this);">
       <hr />
     </div>
     <div class="display2"></div>
   `;
+}
+
+function enableBatterySaver(){
+
 }
 
 function showBluetooth() {
@@ -116,13 +126,16 @@ function showBluetooth() {
   <div class="display1">
         <div class="form-check form-switch">
           <label class="form-check-label" for="bluetooth">Bluetooth</label>
-          <input class="form-check-input" type="checkbox" id="bluetooth" />
+          <input class="form-check-input" onclick='enableBluetooth()' type="checkbox" id="bluetooth" />
         </div>
         <img src="Icons/close-svgrepo-com.svg" onclick="closeDialog(this);">
         <hr />
       </div>
       <div class="display2"></div>
   `;
+}
+function enableBluetooth() {
+
 }
 
 function showWifi() {
@@ -132,13 +145,17 @@ function showWifi() {
   <div class="display1">
         <div class="form-check form-switch">
           <label class="form-check-label" for="wifi">Wifi</label>
-          <input class="form-check-input" type="checkbox" id="wifi" />
+          <input class="form-check-input" onclick='enableWifi()' type="checkbox" id="wifi" />
         </div>
         <img src="Icons/close-svgrepo-com.svg" onclick="closeDialog(this);">
         <hr />
       </div>
       <div class="display2"></div>
   `;
+}
+
+function enableWifi() {
+
 }
 
 function closeDialog(param) {
@@ -203,7 +220,6 @@ function openAppsContainer() {
     }
   }
 }
-
 
 function touch() {
   notifDialog.style.display = "none";

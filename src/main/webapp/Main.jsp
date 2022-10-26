@@ -233,8 +233,11 @@ import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*, java.util.*"%>
       </div>
       <div class="display2">
         <ul>
-          <li>Name: Idris</li>
-          <li>Uid: 001</li>
+        <% String Username = (String)session.getAttribute("Username");
+           int Id = (int) session.getAttribute("ID");
+        %>
+          <li>Name: <%= Username  %></li>
+          <li>Uid: <%= "00"+Id %></li>
           <li>Group: Admin</li>
           <li>Permissions: All~</li>
           <li>Authority: <span style="color: red">root~</span></li>
@@ -254,7 +257,7 @@ import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*, java.util.*"%>
       <a onclick="this.setAttribute('href','Settings.html')">
         <img src="Icons/setting-svgrepo-com.svg" alt="" /> <span>Settings</span>
       </a>
-      <a onclick="this.setAttribute('href','LockScreen.html')">
+      <a onclick="this.setAttribute('href','LockScreen.jsp')">
         <img src="Icons/user-svgrepo-com.svg" alt="" /> <span>Change User</span>
       </a>
     </div>
@@ -272,7 +275,7 @@ import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*, java.util.*"%>
       <a onclick="this.setAttribute('href','ShutDown.html')">
         <img src="Icons/power button.svg" alt="" /> <span>Shut down</span>
       </a>
-      <a onclick="this.setAttribute('href','LockScreen.html')">
+      <a onclick="this.setAttribute('href','LockScreen.jsp')">
         <img src="Icons/lock-svgrepo-com.svg" alt="" /> <span>Lock</span>
       </a>
       <a
@@ -284,7 +287,7 @@ import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*, java.util.*"%>
     </div>
 
     <div id="appsContainer">
-      <h2 style="align-self: flex-start">App list:</h2>
+      <h2 style="align-self: flex-start">Apps</h2>
 
       <a
         onclick="this.setAttribute('href','Applications/COS Console.html')"
@@ -315,7 +318,7 @@ import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*, java.util.*"%>
         <span>Calculator</span>
       </a>
 
-	  <a onclick="this.setAttribute('href','Applications/Todo_list/index.html')" target="Frame">
+	  <a onclick="this.setAttribute('href','Applications/Todo_list/index.jsp')" target="Frame">
         <img src="Icons/todo-svgrepo-com.svg" alt="" class="app-icons" />
         <span>TODO</span>
       </a>
@@ -329,6 +332,11 @@ import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*, java.util.*"%>
         <span>File Manager</span>
       </a>
 
+	 <a onclick="this.setAttribute('href','Applications/ScreenTime.jsp')" target="Frame">
+        <img src="Icons/screen-svgrepo-com.svg" alt="" class="app-icons" />
+        <span>Screen Time</span>
+      </a>
+      
       <a onclick="this.setAttribute('href','Applications/COS_Browser.html')" target="Frame">
         <img src="Icons/browser-svgrepo-com.svg" alt="" class="app-icons" />
         <span>COS Browser</span>

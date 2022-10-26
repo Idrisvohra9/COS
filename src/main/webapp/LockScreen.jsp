@@ -250,6 +250,7 @@
     	String Pass = request.getParameter("pass");
     	session.setAttribute("Username",Uname);
     	session.setAttribute("loginTime", String.format("%d:%d:%d",d.getHours(),d.getMinutes(),d.getSeconds()));
+    	int id = 0;
     	if((Uname!= null && Uname.length() >= 3) && (Pass!=null && Pass.length() == 6)){
             try{
         		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -265,7 +266,14 @@
         				Exists = 1;
         			}
         		}
+        		/* Get the id of the current user */
         		if(Exists == 1){
+	        		PreparedStatement smt2 = c.prepareStatement("SELECT id FROM EXISTINGUSER WHERE USERNAME = '"+Uname+"'");
+	        		ResultSet rs2 = smt2.executeQuery();
+	        		while(rs2.next()){
+		        		id = rs2.getInt("id");        			
+	        		}
+	        		session.setAttribute("ID", id);
         			RequestDispatcher rd = request.getRequestDispatcher("Main.jsp");
 					rd.forward(request,response);
         		}
