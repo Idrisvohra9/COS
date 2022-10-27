@@ -448,7 +448,7 @@
             >
               Welcome to yours truly:)
             </p>
-            <form method="POST" class="register was-validated" id="login-form">
+            <form method="post" class="register was-validated" id="login-form">
               <div class="group">
                 <label for="name"
                   ><i
@@ -498,7 +498,7 @@
 	        		
 	        		PreparedStatement smt = c.prepareStatement("SELECT USERNAME FROM EXISTINGUSER;");
 	        		ResultSet rs = smt.executeQuery();
-	        		int Exists =0;
+	        		int Exists =-1;
 	        		while (rs.next()) {
 	        			String USERNAME = rs.getString("USERNAME");
 	        			if(Uname.equals(USERNAME)){
@@ -514,6 +514,7 @@
 	        		}
 	            } catch(ClassNotFoundException | SQLException e) {
 	        		out.print("Server Side error occured: "+e.toString());
+	        		/* application.s */
 	        	}
 	          }
             %>

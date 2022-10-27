@@ -337,7 +337,7 @@ import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*, java.util.*"%>
         <span>Screen Time</span>
       </a>
       
-      <a onclick="this.setAttribute('href','Applications/COS_Browser.html')" target="Frame">
+      <a onclick="this.setAttribute('href','Applications/COS_Browser.jsp')" target="Frame">
         <img src="Icons/browser-svgrepo-com.svg" alt="" class="app-icons" />
         <span>COS Browser</span>
       </a>

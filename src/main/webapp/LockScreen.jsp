@@ -266,8 +266,8 @@
         				Exists = 1;
         			}
         		}
-        		/* Get the id of the current user */
         		if(Exists == 1){
+        		/* Get the id of the current user */
 	        		PreparedStatement smt2 = c.prepareStatement("SELECT id FROM EXISTINGUSER WHERE USERNAME = '"+Uname+"'");
 	        		ResultSet rs2 = smt2.executeQuery();
 	        		while(rs2.next()){

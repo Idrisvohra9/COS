@@ -494,8 +494,10 @@
 	    	        			PreparedStatement smt3 = c.prepareStatement("INSERT INTO EXISTINGUSER(USERNAME,PASS) VALUES(?,?)");
 	    	        			smt3.setString(1, Uname);
 	    	        			smt3.setString(2, Pass);
-    	        				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-    							rd.forward(request,response);
+	    	        			if(smt3.executeUpdate()==1){	    	        				
+	    	        				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+	    							rd.forward(request,response);
+	    	        			}
         					}
     	        		}
                 	}
