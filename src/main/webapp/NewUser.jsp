@@ -485,13 +485,13 @@
     	        			out.print("<h6 style='color:Red;width:100%;'>The username already exists to make a new account use another username or consider logging-in with existing username.</h6>");
     	        		}
     	        		else{
-    	        			PreparedStatement smt2 = c.prepareStatement("INSERT INTO NEWUSER(USERNAME,EMAIL,PASS) VALUES(?,?,?)");
+    	        			PreparedStatement smt2 = c.prepareStatement("INSERT INTO NEWUSER(USERNAME,EMAIL,PASS) VALUE(?,?,?)");
     	        			smt2.setString(1, Uname);
     	        			smt2.setString(2, Email);
     	        			smt2.setString(3, Pass);
     	        			
     	        			if (smt2.executeUpdate() == 1) {
-	    	        			PreparedStatement smt3 = c.prepareStatement("INSERT INTO EXISTINGUSER(USERNAME,PASS) VALUES(?,?)");
+	    	        			PreparedStatement smt3 = c.prepareStatement("INSERT INTO EXISTINGUSER(USERNAME,PASS) VALUE(?,?)");
 	    	        			smt3.setString(1, Uname);
 	    	        			smt3.setString(2, Pass);
 	    	        			if(smt3.executeUpdate()==1){	    	        				

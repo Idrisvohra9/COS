@@ -20,6 +20,7 @@ const setCanvasBackground = () => {
     ctx.fillStyle = "#fff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = selectedColor; // setting fillstyle back to the selectedColor, it'll be the brush color
+    
 }
 
 window.addEventListener("load", () => {

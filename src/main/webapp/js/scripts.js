@@ -1,4 +1,4 @@
-const taglinesArr = ["COZ, Why not :)", "COZ, It's the best!!", "Bruhh", "🗿", "More Than you Imagined!", "A project", "An Idea", "By the boys", "💪","In it's development stage..","ChadOperatingSystem!!","Over 26k Line of code!!","100% Organic"];
+const taglinesArr = ["COZ, Why not :)", "COZ, It's the best!!", "Bruhh", "🗿", "More Than you Imagined!", "A Maven project", "An Idea", "By the boys", "💪","In it's development stage..","ChadOperatingSystem!!","Over 26k Line of code!!","100% Organic","Sharp!!"];
 
 const tagline = document.getElementById("tagline");
 

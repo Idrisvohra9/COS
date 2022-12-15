@@ -407,13 +407,5 @@ import="jakarta.servlet.*,jakarta.servlet.http.*,java.io.*, java.util.*"%>
     <script src="Main.js"></script>
 
     <!-- For tooltip -->
-    <script>
-      var tooltipTriggerList = [].slice.call(
-        document.querySelectorAll('[data-bs-toggle="tooltip"]')
-      );
-      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-      });
-    </script>
   </body>
 </html>

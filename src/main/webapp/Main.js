@@ -64,6 +64,13 @@ function showDateTime(param) {
   param.setAttribute("data-bs-toggle", "tooltip")
   param.setAttribute("data-bs-placement", "right")
 }
+// For Tooltip:
+var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      );
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
 let id = null;
 
 function closeClock() {

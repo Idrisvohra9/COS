@@ -5,7 +5,7 @@ window.addEventListener('load', () => {
 
 	const username = localStorage.getItem('username') || '';
 
-	nameInput.value = username;
+	nameInput.innerHTML = username;
 
 	nameInput.addEventListener('change', (e) => {
 		localStorage.setItem('username', e.target.value);
